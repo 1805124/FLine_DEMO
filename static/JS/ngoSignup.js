@@ -1,6 +1,6 @@
 // msg code for ngoSignup ---------------  start ----------------------------------
 
-let ngoFormButton = document.getElementById("ngoFormButton")
+/*let ngoFormButton = document.getElementById("ngoFormButton")
 console.log(ngoFormButton)
 
 let ngoForm = document.getElementsByClassName('ngoFormContainer');
@@ -133,4 +133,4 @@ ngoFormButtonClick.addEventListener('click', function ngoFormOnClick(){
 })
 
 
-// msg code for ngoSignup ---------------  end ----------------------------------
+// msg code for ngoSignup ---------------  end ----------------------------------*/

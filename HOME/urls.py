@@ -4,9 +4,11 @@ from HOME import views
 
 urlpatterns = [
     path('',views.index,name='HOME_PAGE'),
-    path('signUp.html',views.sign_up,name='SIGNUP_PAGE'),
-    path('sign-up',views.sign_up,name='SIGN_UP_PAGE'),
-    path('dash_hotel',views.dash_hotel,name='HOTEL_DASHBOARD_PAGE'),
-    path('dash_ngo',views.dash_ngo,name='NGO_DASHBOARD_PAGE'),
-    path('dash_user',views.dash_user,name='USER_DASHBOARD_PAGE')
+    path('index.html',views.index,name='HOME_PAGE'),
+    path('signUp.html',views.sign_up,name='SIGNUP_PAGE_LANDING'),
+     path('ngoSignUp.html',views.sign_up_ngo,name='SIGNUP_PAGE_NGO'),
+    path('aboutUs.html',views.about_us,name='ABOUT_US_PAGE'),
+    path('hotelSignUp.html',views.sign_up_hotel,name='SIGNUP_PAGE_HOTEL'),
+    path('distributionTeamSignUp.html',views.distributionTeamSignUp,name='SIGNUP_PAGE_DISTRIBUTION_TEAM'),
+    
 ]

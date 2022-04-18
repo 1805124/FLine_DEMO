@@ -5,10 +5,13 @@ def index(request):
     return render(request,'index.html') 
 def sign_up(request):
     return render(request,'signUp.html')
-
+def sign_up_ngo(request):
+    return render(request,'ngoSignUp.html')
+def about_us(request):
+    return render(request,'aboutUs.html')
 def dash_hotel(request):
     return render(request,"hotel.html")
-def dash_ngo(request):
-    return render(request,"ngo.html")
-def dash_user(request):
-    return render(request,"User.html")
+def sign_up_hotel(request):
+    return render(request,"hotelSignUp.html")
+def distributionTeamSignUp(request):
+    return render(request,"distributionTeamSignUp.html")

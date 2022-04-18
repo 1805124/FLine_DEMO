@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,7 +19,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&family=Open+Sans&family=Pacifico&family=Roboto&family=Ubuntu&display=swap" rel="stylesheet">
         
         <!-- CSS-->
-        <link rel="stylesheet" href="CSS/styles.css">
+        <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
 </head>
 
 <body>
@@ -26,7 +27,7 @@
     <!--Nav Bar start-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navBar">
         <div class="container-fluid">
-                <a class="navbar-brand" href="#">F-Line Services</a>
+                <a class="navbar-brand" href="#" id="logo">F-Line Services</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -167,7 +168,8 @@
             <h3>Sign Up and Register as a Hotel</h3>
         </div>
         <div class="container d-flex justify-content-center align-items-center">
-            <form class="F2 innerFormPadding" id="hotelForm">
+            <form action='hotelsignup' method="POST" class="F2 innerFormPadding" id="hotelForm" enctype="multipart/form-data" >
+                {% csrf_token %}
                 <div class="input-group">
                     <span class="input-group-text">Enter your name</span>
                     <input type="text" aria-label="name" class="form-control" id="requester_name" name="req_name">
@@ -183,12 +185,12 @@
                 <div class="hotelcontact">
                     <div class="input-group">
                         <span class="input-group-text">Email Address</span>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com (email-id of HOTEL will be set to same YOU CAN CHANGE IT FROM YOUR ACCOUNT)) " name="HOTEL_EMAIL" >
                     </div>
                     <br>
                     <div class="input-group">
                         <span class="input-group-text">Password</span>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter your password">
+                        <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="CREATE YOUR PASSWORD" name="password1">
                     </div>
                     <div id="passwordHelpBlock" class="form-text">
                         Your password must be 8-20 characters long, containing letters numbers and special characters ,and must not contain spaces or emoji.
@@ -196,7 +198,7 @@
                     <br>
                     <div class="input-group">
                         <span class="input-group-text">Phone number: +91</span>
-                        <input type="phone" class="form-control" id="exampleFormControlInput1" placeholder="" maxlength="10">
+                        <input type="phone" class="form-control" id="exampleFormControlInput1" placeholder="HOTEL_CONTACT WILL BE SET" maxlength="10" name="hotel_phone">
                     </div>
                 </div>
                 <br>
@@ -204,11 +206,11 @@
                 <div class="HOTEL_ABILITY">
                     <div class="input-group">
                         <span class="input-group-text">Can Provide For</span>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected value="E">5-10 </option>
-                                <option value="W"> 10-15</option>
-                                <option value="N"> 15-20</option>
-                                <option value="">20+</option>
+                            <select class="form-select" aria-label="Default select example" name="capacity">
+                                <option selected value="mini">5-10 </option>
+                                <option value="general"> 10-15</option>
+                                <option value="regular"> 15-20</option>
+                                <option value="plus">20+</option>
                             </select> 
                         <span class="input-group-text">People</span>
                     </div>
@@ -218,7 +220,7 @@
                 <div class="HOTEL_ZONE">
                     <div class="input-group">
                         <span class="input-group-text">Select Your Zone</span>
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" name="ZONE">
                             <option selected value="1"> ZONE-1 </option>
                             <option value="2"> ZONE-2 </option>
                             <option value="3"> ZONE-3 </option>
@@ -230,14 +232,20 @@
                 <br>
 
                 <div class="input-group">
-                    <span class="input-group-text">Upload official Document</span>
-                    <input type="file" class="form-control" id="UploadedImage" name="UploadedImage">
-                    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                    <span class="input-group-text">UPLOAD IMAGE OF HOTEL</span>
+                    <input type="file" class="form-control" id="UploadedImage1" name="UploadedImage">
+                    <label class="input-group-text" for="inputGroupFile02">Uploaded</label>
+                </div>
+
+                <br>
+                <div class="input-group">
+                    <span class="input-group-text">Upload AUTHENTICATION DOCUMENTS</span>
+                    <input type="file" class="form-control" id="UploadedImage1" name="auth_image">
                 </div>
                 <br>
 
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name ="author">
                     <label class="form-check-label text-muted" for="exampleCheck1">By Clicking here you agree to our Terms and conditions.</label>
                 </div>
 
@@ -270,8 +278,8 @@
 <!-- Footer end -->
 
 
-<!-- JS -->
-<script src="JS/hotelSignup.js"></script>
-
+<!-- JS 
+<script src="{% static 'JS/hotelSignup.js' %}"></script>
+-->
 </body>
 </html>

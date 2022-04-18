@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,7 +19,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&family=Open+Sans&family=Pacifico&family=Roboto&family=Ubuntu&display=swap" rel="stylesheet">
         
         <!-- CSS-->
-        <link rel="stylesheet" href="CSS/styles.css">
+        <link rel="stylesheet" href="{% static 'CSS/styles.css' %}">
     </head>
 
 <body>
@@ -167,7 +168,8 @@
             <h3>Sign Up and Register as a NGO</h3>
         </div>
         <div class="container d-flex justify-content-center align-items-center">
-            <form class="F1 innerFormPadding" id="ngoForm">
+            <form Action="\ngosignup" method="post" class="F1 innerFormPadding" id="ngoForm" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="requester_contact">
                     <div class="input-group">
                         <span class="input-group-text">Enter your name</span>
@@ -182,13 +184,13 @@
                 <br>
                 <div class="input-group">
                     <span class="input-group-text">Email Address</span>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name='req_email'>
                 </div>
                 <br>
                 
                 <div class="input-group">
                     <span class="input-group-text">Password</span>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter your password">
+                    <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="ENTER THE PASSKEY(AUTHORIZED) if present" name="passkey">
                 </div>
                 <div id="passwordHelpBlock" class="form-text">
                     Your password must be 8-20 characters long, containing letters numbers and special characters ,and must not contain spaces or emoji.
@@ -198,7 +200,7 @@
                 <div class="NGO_ZONE">
                     <div class="input-group">
                         <span class="input-group-text">NGO ZONE</span>
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" name="ZONE">
                         <option selected value="1"> ZONE-1 </option>
                         <option value="2"> ZONE-2 </option>
                         <option value="3"> ZONE-3 </option>
@@ -212,7 +214,7 @@
                 <div class="NGO_AREA">
                     <div class="input-group">
                         <span class="input-group-text">Select Area</span>
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" name="AREA">
                         <option selected value="E"> EAST </option>
                         <option value="W"> WEST </option>
                         <option value="N"> NORTH </option>
@@ -225,10 +227,10 @@
                 <div class="NGO_CAPACITY">
                     <div class="input-group">
                         <span class="input-group-text">Estimated Capacity</span>
-                        <select class="form-select" aria-label="Default select example">
-                        <option selected value="E">MINI 10-25</option>
-                        <option value="W">REGULAR 25-60</option>
-                        <option value="N">CAMP 60+</option>
+                        <select class="form-select" aria-label="Default select example" name ="CAPACITY">
+                        <option selected value="min">MINI 10-25</option>
+                        <option value="reg">REGULAR 25-60</option>
+                        <option value="plus">CAMP 60+</option>
                     </select>
                     </div>
                 </div>
@@ -237,13 +239,13 @@
                 <div class="uploadimage">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Upload Image</span>
-                        <input type="file" class="form-control" id="uploadtheimage" name="uploadtheimage">
+                        <input type="file" class="form-control" id="uploadtheimage" name="image_upload">
                         <label class="input-group-text" for="inputGroupFile02">Upload</label>
                     </div>
                 </div>
 
                 <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="author" >
                     <label class="form-check-label text-muted" for="exampleCheck1">By Clicking here you agree to our Terms and conditions.</label>
                 </div>
 
@@ -277,7 +279,7 @@
 
 
 <!-- JS -->
-<script src="JS/ngoSignup.js"></script>
+<script ></script>
 
 </body>
 </html>

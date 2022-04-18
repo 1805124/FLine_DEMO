@@ -1,6 +1,6 @@
 // msg code for HotelSignup ---------------  start ----------------------------------
 
-let hotelFormButton  = document.getElementById("hotelFormButton")
+/*let hotelFormButton  = document.getElementById("hotelFormButton")
 console.log(hotelFormButton)
 
 let form = document.getElementById("hotelForm")
@@ -124,4 +124,4 @@ hotelFormButtonClick.addEventListener('click', function hotelFormOnClick() {
 
 
     ` ; 
-})
+})*/

@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -26,7 +27,7 @@
     <!--Nav Bar start-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navBar">
         <div class="container-fluid">
-                <a class="navbar-brand" href="#">F-Line Services</a>
+                <a class="navbar-brand" href="#" id="logo">F-Line Services</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -169,7 +170,7 @@
                 <p class="lead">To help the poor community by providing them Quality food untouched and discarded from Restaurants,Hotels and Families. We aim to reduce food wastage ultimately reducing the number of people suffering from hunger.</p>
                 </div>
                 <div class="col-md-5">
-                <img src="images/food_donation3.jpg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" alt="food-donation">
+                <img src="{% static 'images/food_donation3.jpg' %}" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" alt="food-donation">
         
                 </div>
             </div>
@@ -182,7 +183,7 @@
                 <p class="lead">We provide a comprehensive and robust portal to Our users where they can register themselves on the behalf of their NGO or Hotel/Restaurant and then the portal helps them in getting a match so that the food is donated to the correct NGO by their correspoding Hotel/Restaurant.</p>
             </div>
             <div class="col-md-5 order-md-1">
-                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="images/portal_working.jpg" alt="website-workflows">
+                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="{% static 'images/portal_working.jpg' %}" alt="website-workflows">
             </div>
         </div>
     </div>
@@ -190,7 +191,7 @@
     <div class="container center my-5">
         <div class="row ">
             <div class="col-lg-4 ">
-                <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="images/ngo_image.jpg" alt="ngo-photo">
+                <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static 'images/ngo_image.jpg' %}" alt="ngo-photo">
                 <h2>NGO</h2>
                 <p>Sign yourself up on the behalf of your NGO and get Food donated to your NGO by registered restaurant/hotels.</p>
                 <p><a class="btn btn-outline-dark" href="#">Continue »</a></p>
@@ -198,7 +199,7 @@
             <!-- /.col-lg-4 -->
             
             <div class="col-lg-4 ">
-                <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="images/restaurant_image.png"  alt="restaurant_image">
+                <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static 'images/restaurant_image.png' %}" alt="restaurant_image">
                 <h2>Hotels/Restaurants</h2>
                 <p>Sign yourself up on the behalf of your hotel and get notified of the registered NGOs to Donate Food.</p>
                 <p><a class="btn btn-outline-dark" href="#">Continue »</a></p>
@@ -206,7 +207,7 @@
             <!-- /.col-lg-4 -->
                 
                 <div class="col-lg-4">
-                    <img src="images/team_image.png" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="team-working">
+                    <img src="{% static 'images/team_image.png' %}" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="team-working">
                     <h2>Distribution Teams</h2>
                     <p>Sign yourself up as a Volunteer to be the part of the team that look over the delivery logistics to ensure smooth and efficent delivery.</p>
                     <p><a class="btn btn-outline-dark" href="#">Continue »</a></p>
