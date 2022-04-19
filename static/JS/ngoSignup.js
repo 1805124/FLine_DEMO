@@ -1,136 +1,209 @@
-// msg code for ngoSignup ---------------  start ----------------------------------
+// const ngoFormButtonClick = document.getElementById("ngoFormButton")
 
-/*let ngoFormButton = document.getElementById("ngoFormButton")
-console.log(ngoFormButton)
+// ngoFormButtonClick.addEventListener('click',function (event) {
+//     // event.preventDefault(); // stops the submitting and prints the alert
+//     const alertShow = document.getElementById("alertBox")
+//     alertShow.classList.remove("hide")
+    
+// })
 
-let ngoForm = document.getElementsByClassName('ngoFormContainer');
-console.log(ngoForm)
+const validIcon = `
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+</svg>
+`;
+
+const invalidIcon = `
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+</svg>`;
+
+const nameErrorMsg = `Name should contain min. 5 characters and max. 30 characters.
+`;
+
+const validMsg = `Looks Good!
+`;
+
+const contactNumberErrorMsg=`Contact Number should contain 10 digits.
+`;
+
+
+const emailErrorMsg=`Please Enter a valid Email Address.
+`;
+
+const passwordErrorMsg = `Please Enter a valid Password.
+`;
+
+const uploadErrorMsg = `Please Upload a .png File.
+`;
+
+
+function clearErrors(){
+    let errors = document.getElementsByClassName("formError");
+    for (let item of errors){
+        item.innerHTML = "";
+    }
+}
+
+
+
+function setError(id,error){
+    //sets error inside tag of id
+    let element = document.getElementById(id)
+    element.innerHTML = error;
+}
+
+function setValid(id,valid){
+    let element = document.getElementById(id)
+    element.innerHTML=valid;
+}
+
+//do a proper from validation and then submit it properly and then make a proper alert , the above one is temporary
+
+
 
 const ngoFormButtonClick = document.getElementById("ngoFormButton")
 
-ngoFormButtonClick.addEventListener('click', function ngoFormOnClick(){
-    document.getElementById("ngoForm").reset();
-    document.getElementById("ngoContainer").innerHTML = 
-    `
-    <div class="container">
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-        </symbol>
-        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-        </symbol>
-        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-        </symbol>
-    </svg>
+ngoFormButtonClick.addEventListener('click',function validateForm (event) {
+    event.preventDefault();
+    clearErrors();
+    //perform validation and if validation fails , set the value of defaultReturnValue to false.
+})
 
-    <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
-        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-        <div>
-            Congratulations You have successfully signed up your account!!
-        </div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+// name validation
+const username = document.forms["myForm"]["requester_name"];
+username.addEventListener('input',function (e) {
+    console.log(e.target.name)
+    let target = e.target.name;
+    if (target == "req_name"){
+        var name = document.forms["myForm"]["requester_name"].value;
+    if((name.length<=4)||(name.length>30)){
+        setError("nameMsg",nameErrorMsg);
+        setError("nameIcon",invalidIcon)
+        document.getElementById("nameIcon").classList.add("invalidIcon")
+        document.getElementById("nameIcon").classList.remove("validIcon")
+        document.getElementById("nameMsg").classList.add("errorMsg")
+        document.getElementById("nameMsg").classList.remove("validMsg")
+    }
+    else{
+        setValid("nameMsg",validMsg)
+        setValid("nameIcon",validIcon)
+        document.getElementById("nameIcon").classList.add("validIcon")
+        document.getElementById("nameIcon").classList.remove("invalidIcon")
+        document.getElementById("nameMsg").classList.add("validMsg")
+        document.getElementById("nameMsg").classList.remove("errorMsg")
+    }
+    }
+})
 
-    <div class="container ngoFormContainer" id="ngoContainer">
-        <div class="container center">
-            <h3>Sign Up and Register as a NGO</h3>
-        </div>
-        <div class="container d-flex justify-content-center align-items-center">
-            <form class="F1 innerFormPadding" id="ngoForm">
-                <div class="requester_contact">
-                    <div class="input-group">
-                        <span class="input-group-text">Enter your name</span>
-                        <input type="text" aria-label="name" class="form-control" id="requester_name" name="req_name">
-                    </div>
-                    <br>
-                    <div class="input-group">
-                        <span class="input-group-text">Contact Number</span>
-                        <input type="phone" aria-label="name" class="form-control" id="requester_phone" name="req_phone" maxlength="10">
-                    </div>
-                </div>
-                <br>
-                <div class="input-group">
-                    <span class="input-group-text">Email Address</span>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                </div>
-                <br>
-                
-                <div class="input-group">
-                    <span class="input-group-text">Password</span>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Enter your password">
-                </div>
-                <div id="passwordHelpBlock" class="form-text">
-                    Your password must be 8-20 characters long, containing letters numbers and special characters ,and must not contain spaces or emoji.
-                </div>
-                <br>
-                
-                <div class="NGO_ZONE">
-                    <div class="input-group">
-                        <span class="input-group-text">NGO ZONE</span>
-                        <select class="form-select" aria-label="Default select example">
-                        <option selected value="1"> ZONE-1 </option>
-                        <option value="2"> ZONE-2 </option>
-                        <option value="3"> ZONE-3 </option>
-                        <option value="4"> ZONE-4 </option>
-                        <option value="5"> ZONE-5 </option>
-                    </select>
-                    </div>
-                </div>
-                <br>
-                
-                <div class="NGO_AREA">
-                    <div class="input-group">
-                        <span class="input-group-text">Select Area</span>
-                        <select class="form-select" aria-label="Default select example">
-                        <option selected value="E"> EAST </option>
-                        <option value="W"> WEST </option>
-                        <option value="N"> NORTH </option>
-                        <option value="S"> SOUTH </option>
-                    </select>
-                    </div>
-                </div>
-                <br>
-                
-                <div class="NGO_CAPACITY">
-                    <div class="input-group">
-                        <span class="input-group-text">Estimated Capacity</span>
-                        <select class="form-select" aria-label="Default select example">
-                        <option selected value="E">MINI 10-25</option>
-                        <option value="W">REGULAR 25-60</option>
-                        <option value="N">CAMP 60+</option>
-                    </select>
-                    </div>
-                </div>
-                <br>
-                
-                <div class="uploadimage">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Upload Image</span>
-                        <input type="file" class="form-control" id="uploadtheimage" name="uploadtheimage">
-                        <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                    </div>
-                </div>
+//contact number validation
+const contactNumber = document.forms["myForm"]["requester_phone"];
+contactNumber.addEventListener('input',function (e){
+    console.log(e.target.name)
+    let target = e.target.name;
+    if (target=="req_phone"){
+        var contactNumber = document.forms["myForm"]["requester_phone"].value;
+        if(contactNumber.length!=10){
+            setError("contactNumberMsg",contactNumberErrorMsg)
+            setError("contactIcon",invalidIcon)
+            document.getElementById("contactIcon").classList.add("invalidIcon")
+            document.getElementById("contactIcon").classList.remove("validIcon")
+            document.getElementById("contactNumberMsg").classList.add("errorMsg")
+            document.getElementById("contactNumberMsg").classList.remove("validMsg")
+        }
+        else{
+            setValid("contactNumberMsg",validMsg)
+            setValid("contactIcon",validIcon)
+            document.getElementById("contactIcon").classList.add("validIcon")
+            document.getElementById("contactIcon").classList.remove("invalidIcon")
+            document.getElementById("contactNumberMsg").classList.add("validMsg")
+            document.getElementById("contactNumberMsg").classList.remove("errorMsg")
+        }
+    
+    }
+})
 
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label text-muted" for="exampleCheck1">By Clicking here you agree to our Terms and conditions.</label>
-                </div>
+//email address validation
+const email = document.forms["myForm"]["signUpEmail"];
+email.addEventListener('input',function(e){
+    // console.log(e.target.name)
+    let target = e.target.name;
+    if(target=="email"){
+        var email = document.forms["myForm"]["signUpEmail"].value;
+        const emailFormat =/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+        const emailValid = emailFormat.test(email)
+        if(emailValid == false){
+            setError("emailMsg",emailErrorMsg)
+            setError("emailIcon",invalidIcon)
+            document.getElementById("emailIcon").classList.add("invalidIcon")
+            document.getElementById("emailIcon").classList.remove("validIcon")
+            document.getElementById("emailMsg").classList.add("errorMsg")
+            document.getElementById("emailMsg").classList.remove("validMsg")
+        }
+        else{
+            setValid("emailMsg",validMsg)
+            setValid("emailIcon",validIcon)
+            document.getElementById("emailIcon").classList.add("validIcon")
+            document.getElementById("emailIcon").classList.remove("invalidIcon")
+            document.getElementById("emailMsg").classList.add("validMsg")
+            document.getElementById("emailMsg").classList.remove("errorMsg")
+        }
+    }
+})
 
-                <div class="container center">
-                    <div class="request">
-                        <button class="btn btn-primary" type="submit" id="ngoFormButton">Sign up</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    </div>;
-
-    `
+//password validation 
+const password = document.forms["myForm"]["signUpPassword"]
+password.addEventListener('input', function (e){
+    // console.log(e.target.name)
+    let target = e.target.name;
+    if(target=="password"){
+        var password = document.forms["myForm"]["signUpPassword"].value;
+        const passwordFormat =/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,30}$/;
+        const passwordValid = passwordFormat.test(password)
+        if(passwordValid == false){
+            setError("passwordMsg",passwordErrorMsg)
+            setError("passwordIcon",invalidIcon)
+            document.getElementById("passwordIcon").classList.add("invalidIcon")
+            document.getElementById("passwordIcon").classList.remove("validIcon")
+            document.getElementById("passwordMsg").classList.add("errorMsg")
+            document.getElementById("passwordMsg").classList.remove("validMsg")
+        }
+        else{
+            setValid("passwordMsg",validMsg)
+            setValid("passwordIcon",validIcon)
+            document.getElementById("passwordIcon").classList.add("validIcon")
+            document.getElementById("passwordIcon").classList.remove("invalidIcon")
+            document.getElementById("passwordMsg").classList.add("validMsg")
+            document.getElementById("passwordMsg").classList.remove("errorMsg")
+        }
+    }
 })
 
 
-// msg code for ngoSignup ---------------  end ----------------------------------*/
+//upload validation
+const upload = document.forms["myForm"]["uploadtheimage"];
+upload.addEventListener('input',function (e){
+    // console.log(e.target.name)
+    let target = e.target.name;
+    if(target=="uploadtheimage"){
+        var upload = document.forms["myForm"]["uploadtheimage"].value;
+        var uploadFormat =/\.(png)$/;
+        uploadValid = uploadFormat.test(upload);
+        if(uploadValid == false){
+            setError("uploadMsg",uploadErrorMsg)
+            setError("uploadIcon",invalidIcon)
+            document.getElementById("uploadIcon").classList.add("invalidIcon")
+            document.getElementById("uploadIcon").classList.remove("validIcon")
+            document.getElementById("uploadMsg").classList.add("errorMsg")
+            document.getElementById("uploadMsg").classList.remove("validMsg")
+        }
+        else{
+            setValid("uploadMsg",validMsg)
+            setValid("uploadIcon",validIcon)
+            document.getElementById("uploadIcon").classList.add("validIcon")
+            document.getElementById("uploadIcon").classList.remove("invalidIcon")
+            document.getElementById("uploadMsg").classList.add("validMsg")
+            document.getElementById("uploadMsg").classList.remove("errorMsg")
+        }
+    }
+} )
