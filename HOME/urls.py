@@ -10,5 +10,6 @@ urlpatterns = [
     path('aboutUs.html',views.about_us,name='ABOUT_US_PAGE'),
     path('hotelSignUp.html',views.sign_up_hotel,name='SIGNUP_PAGE_HOTEL'),
     path('distributionTeamSignUp.html',views.distributionTeamSignUp,name='SIGNUP_PAGE_DISTRIBUTION_TEAM'),
+    path('login',views.login,name='LOGIN')
     
 ]

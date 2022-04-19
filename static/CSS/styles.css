@@ -103,3 +103,10 @@ a .logo:hover
 {
     background-color : rgb(252, 255, 255);
 }
+
+div .alert
+{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: 10px solid red;
+    font-size: 500px;
+}

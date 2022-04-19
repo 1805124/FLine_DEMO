@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from ngosignup import models
-from ngosignup.models import ngosignup
-from ngosignup.models import USERS
+from ngosignup.models import ngosignup,USERS
 
 # Create your views here.
 def ngosignup(request):
@@ -33,7 +32,7 @@ def ngosignup(request):
         ins.save()
         ins2.save()
         print("The DATA HAS BEEN ADDED TO THE DB")
-        return render(request,"index.html")
+        return render(request,"dash.html",context)
         
 
 
