@@ -34,13 +34,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link active underline" id="home" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="aboutUs.html">About Us</a>
+                        <a class="nav-link active underline" id="aboutUs" href="aboutUs.html">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="modal" data-bs-target="#exampleModal">Contact Us</a>
+                        <a class="nav-link active underline" data-bs-toggle="modal" id="contactUs" data-bs-target="#exampleModal">Contact Us</a>
                         <!-- Modal -->
                             <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable">
@@ -92,7 +92,7 @@
                         <!-- Modal -->
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle underline" id="services" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Services
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -108,7 +108,7 @@
                 
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
+                        <li class="nav-item" id="loginButton">
                             <a class="btn btn-secondary navbar-dark bg-dark nav-link active" data-bs-toggle="modal" data-bs-target="#loginModal"> Log In </a>
                             
                             <!-- Modal -->
@@ -152,7 +152,7 @@
                                 </div>    
                         </li>
                         &nbsp;&nbsp;
-                        <li class="nav-item">
+                        <li class="nav-item expandCard">
                             <a class="btn btn-secondary navbar-dark bg-dark nav-link active" href="signUp.html"> Sign Up </a> 
                         </li>
                     </ul>
@@ -209,7 +209,7 @@
     <div class="container my-5">
             <div class="row mb-2">
                 <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative expandCard">
                     <div class="col p-4 d-flex flex-column position-static">
                     <strong class="d-inline-block mb-2 text-primary">Our Motto</strong>
                     <h3 class="mb-0">Food Waste Reduction </h3>
@@ -223,7 +223,7 @@
                 </div>
                 </div>
                 <div class="col-md-6">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative expandCard">
                     <div class="col p-4 d-flex flex-column position-static">
                     <strong class="d-inline-block mb-2 text-success">Want to Donate?</strong>
                     <h3 class="mb-0">Food Donation Camps</h3>
@@ -243,7 +243,7 @@
     <div class="container my-5">
         <div class="row mb-2">
             <div class="col-md-6">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative expandCard">
                 <div class="col p-4 d-flex flex-column position-static">
                 <strong class="d-inline-block mb-2 text-info">Individual Contribution</strong>
                 <h3 class="mb-0">Single Entity</h3>
@@ -258,7 +258,7 @@
             </div>
             </div>
             <div class="col-md-6">
-            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative expandCard">
                 <div class="col p-4 d-flex flex-column position-static">
                 <strong class="d-inline-block mb-2 text-danger">Global Food Wastage</strong>
                 <h3 class="mb-0">Food Waste Index 2021</h3>
@@ -302,7 +302,7 @@
 {% endblock %}
 
 <!-- JS -->
-    <script src="{% static 'JS/script.js' %}"></script>
+    <script src="{% static 'JS/expandCardsUnderline.js' %}"></script>
     
 </body>
 </html>
