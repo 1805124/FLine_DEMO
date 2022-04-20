@@ -28,7 +28,18 @@ def hotelsignup(request):
         print("THE DATA ADDED FROM HOTELSIGNUP")
     else:
         print("NOT A POST")
-    return render(request,"index.html")
+    context={
+        "NAME": req_name,
+        "IMAGE" : profile_pic,
+        "HOTEL_NAME":hotel_name,
+        "HOTEL_EMAIL":hotel_Email,
+        "CONTACT":hotel_Phone,
+        "CAPACITY":hotel_sub,
+        "ZONE":hotel_zone,
+        "AUTH_DOC":auth_pic,
+        "AUTH":author
+    }
+    return render(request,"dash.html",context)
 
 
 

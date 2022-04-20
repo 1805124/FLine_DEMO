@@ -34,7 +34,13 @@ def ngosignup(request):
         print("The DATA HAS BEEN ADDED TO THE DB")
         context={
             "NAME" :req_name,
-            "IMAGE":image_upload 
+            "IMAGE":image_upload,
+            "CONTACT":contact_no,
+            "EMAIL":email,
+            "ZONE":zone,
+            "AREA":area,
+            "CAPACITY":capacity,
+            "AUTH":b_auth
         }
         return render(request,"dash.html",context)
         
