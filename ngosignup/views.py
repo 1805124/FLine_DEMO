@@ -28,9 +28,7 @@ def ngosignup(request):
             b_auth = True    
         
         ins = models.ngosignup(req_name=req_name,req_phone=contact_no,req_email=email,passkey=passkey,ZONE=zone,AREA=area,CAPACITY=capacity,image_upload=image_upload,author=b_auth)
-        ins2 = models.USERS(req_name=req_name,req_email=email,req_password=passkey,age=18,domain="RV",profile_pic= image_upload,agree=b_auth,req_phone=contact_no)
         ins.save()
-        ins2.save()
         print("The DATA HAS BEEN ADDED TO THE DB")
         context={
             "NAME" :req_name,
@@ -40,7 +38,8 @@ def ngosignup(request):
             "ZONE":zone,
             "AREA":area,
             "CAPACITY":capacity,
-            "AUTH":b_auth
+            "AUTH":b_auth,
+            "TYPE":"ngo"
         }
         return render(request,"dash.html",context)
         

@@ -19,7 +19,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&family=Open+Sans&family=Pacifico&family=Roboto&family=Ubuntu&display=swap" rel="stylesheet">
         
         <!-- CSS-->
-        <link rel="stylesheet" href="{% static '/CSS/styles.css' %}">
+        <link rel="stylesheet" href="{% static '/CSS/styles.css' %}" type="text/css">
 </head>
 <body>
     <!--Header start-->
@@ -61,7 +61,7 @@
           </nav>
         <!--Navbar start-->
     <!--Header end-->
-
+          <div class="hello">HELLO</div>
     <!--middle section start-->
     <div class="container-fluid">
         <div class="row">
@@ -98,18 +98,26 @@
                                 My Teams
                             </a>
                         </li>
+                        {% block regNgo %}
+                        {% if TYPE == "HOTEL" %}
                         <li>
                             <a href="#" class="nav-link link-dark">
                                 <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
                                 Registered NGOs
                             </a>
                         </li>
+                        {% endif %}
+                        {% endblock %}
+                        {% block regHOT%}
+                        {% if TYPE == "NGO" %}
                         <li>
                             <a href="#" class="nav-link link-dark">
                                 <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
                                 Registered Hotels
                             </a>
                         </li>
+                        {% endif %}
+                        {% endblock %}
                     </ul>
                     <hr>
                     <div class="dropdown">

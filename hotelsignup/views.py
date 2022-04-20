@@ -22,9 +22,7 @@ def hotelsignup(request):
         else:
             b_auth = True
         ins = models.hotelsignup(req_name=req_name,hotel_name=hotel_name,hotel_phone = hotel_Phone,hotel_email= hotel_Email,password=password1,ZONE=hotel_zone,CAPACITY=hotel_sub,hotel_image_upload=profile_pic,auth_doc_upload=auth_pic,author=b_auth)
-        ins2 = models.USERS(req_name=req_name,req_email=hotel_Email,req_password=password1,req_phone=hotel_Phone,age=18,domain="RV",profile_pic=profile_pic,agree=b_auth)
         ins.save()
-        ins2.save()
         print("THE DATA ADDED FROM HOTELSIGNUP")
     else:
         print("NOT A POST")
@@ -37,7 +35,8 @@ def hotelsignup(request):
         "CAPACITY":hotel_sub,
         "ZONE":hotel_zone,
         "AUTH_DOC":auth_pic,
-        "AUTH":author
+        "AUTH":author,
+        "TYPE":"hotel"
     }
     return render(request,"dash.html",context)
 

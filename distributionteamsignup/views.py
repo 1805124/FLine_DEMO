@@ -18,7 +18,7 @@ def distributionteamsignup(request):
           b_authentic = False  
       ins = models.USERS(req_name=req_name,req_email=req_email,req_password=password,req_phone=req_phone,age=age,domain=domain,profile_pic=profile_picture,agree=b_authentic)
       ins.save()
-      print("THE DATA ADDED SUCCESSFULLY IN STUDENT DB")
+      print("THE DATA ADDED SUCCESSFULLY IN USERS DATA BASE")
       data1 = USERS.objects.filter(req_email=req_email)
       if(len(data1)>0):
           for a in data1:
@@ -28,7 +28,8 @@ def distributionteamsignup(request):
                   "EMAIL":req_email,
                   "CONTACT":req_phone,
                   "AGE":age,
-                  "DOMAIN":domain
+                  "DOMAIN":domain,
+                  "TYPE":"USER"
               }
 
       return render(request,"dash.html",context)

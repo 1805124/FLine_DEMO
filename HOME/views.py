@@ -1,5 +1,7 @@
 from django.shortcuts import render,HttpResponse
 from distributionteamsignup.models import USERS
+from hotelsignup.models import hotelsignup
+from ngosignup.models import ngosignup 
 from django.contrib import messages
 
 
@@ -27,15 +29,60 @@ def login(request):
             b_check = True
         print(email,"     ",password)
         data1 = USERS.objects.filter(req_email=email)
+        data2 = hotelsignup.objects.filter(hotel_email=email)
+        data3 = ngosignup.objects.filter(req_email=email)
         if(len(data1)>0):
             for a in data1:
                 if (a.req_password == password):
-                    print("validated .. Login Successfull")
+                    print("validated .. Login Successfull as USER")
                     context={
                         "NAME":a.req_name,
+                        "EMAIL":a.req_email,
+                        "CONTACT":a.req_phone,
                         "AGE":a.age,
                         "DOMAIN":a.domain,
-                        "IMAGE":a.profile_pic }
+                        "IMAGE":a.profile_pic,
+                        "TYPE":"USER"
+                    }
+                    return render(request,"dash.html",context) 
+                else:
+                    print("Password does Not Matching .. login failed")
+                    context={ "alertval":"PASSWORD WAS INVALID BRO",}
+                    return render(request,"index.html",context)
+        elif(len(data2)>0):
+            for a in data2:
+                if (a.password == password):
+                    print("validated .. Login Successfull as HOTEL")
+                    context={
+                        "NAME":a.req_name,
+                        "HOTEL_NAME":a.hotel_name,
+                        "CONTACT":a.hotel_phone,
+                        "EMAIL":a.hotel_email,
+                        "ZONE":a.ZONE,
+                        "CAPACITY":a.CAPACITY,
+                        "IMAGE":a.hotel_image_upload,
+                        "AUTH_DOC":a.auth_doc_upload,
+                        "TYPE":"HOTEL"
+                    }
+                    return render(request,"dash.html",context) 
+                else:
+                    print("Password does Not Matching .. login failed")
+                    context={ "alertval":"PASSWORD WAS INVALID BRO",}
+                    return render(request,"index.html",context)
+        elif(len(data3)>0):
+            for a in data3:
+                if (a.passkey == password):
+                    print("validated .. Login Successfull as NGO")
+                    context={
+                        "NAME":a.req_name,
+                        "CONTACT":a.req_phone,
+                        "EMAIL":a.req_email,
+                        "ZONE":a.ZONE,
+                        "AREA":a.AREA,
+                        "CAPACITY":a.CAPACITY,
+                        "IMAGE":a.image_upload,
+                        "TYPE":"NGO"
+                    }
                     return render(request,"dash.html",context) 
                 else:
                     print("Password does Not Matching .. login failed")
@@ -45,6 +92,7 @@ def login(request):
             print("email id Not Registered...")
             messages.info(request,"EMAIL NOT REGISTERED YET")
             return render(request,"signUp.html")
+           
             
             
 
