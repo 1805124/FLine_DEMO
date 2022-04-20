@@ -44,7 +44,7 @@ def login(request):
         else:
             print("email id Not Registered...")
             messages.info(request,"EMAIL NOT REGISTERED YET")
-            return render(request,"distributionteamsignup.html")
+            return render(request,"signUp.html")
             
             
 
