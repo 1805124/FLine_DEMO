@@ -32,7 +32,7 @@ def ngosignup(request):
         ins.save()
         ins2.save()
         print("The DATA HAS BEEN ADDED TO THE DB")
-        return render(request,"dash.html",context)
+        return render(request,"dash.html")
         
 
 

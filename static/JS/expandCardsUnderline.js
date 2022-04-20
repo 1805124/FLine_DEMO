@@ -38,8 +38,12 @@ services.addEventListener('mouseleave',function(){
     services.classList.remove("expandCard");
 })
 
-const loginButton = document.getElementById("loginButton")
+const loginBtn = document.getElementById("loginBtn");
 
-loginButton.addEventListener('mouseleave',function(){
-    loginButton.classList.add("expandCard");
+loginBtn.addEventListener('mouseenter',function(){
+    loginBtn.classList.add("expandCard");
+})
+
+loginBtn.addEventListener('mouseleave',function(){
+    loginBtn.classList.remove("expandCard");
 })
