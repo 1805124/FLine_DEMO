@@ -23,8 +23,152 @@
 </head>
 <body>
     <!--Header start-->
+        <!--Navbar start-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">F-Line DashBoard</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div style="color: white;">
+                    Welcome {{NAME}}
+                </div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">Link</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Dropdown
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                <div class="userLogo">
+                    <img src="{{IMAGE.url}}" height="50px" width="50px" alt="user-photo" class="rounded-circle me-2">
+                </div>
+              </div>
+            </div>
+          </nav>
+        <!--Navbar start-->
+    <!--Header end-->
+
+    <!--middle section start-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <!--Sidebar content-->
+                <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+                    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+                        <span class="fs-4">Functionalities</span>
+                    </a>
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active" aria-current="page">
+                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                                My Account
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link link-dark">
+                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link link-dark">
+                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                                Orders
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link link-dark">
+                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                                My Teams
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link link-dark">
+                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                                Registered NGOs
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-link link-dark">
+                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                                Registered Hotels
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{IMAGE.url}}" alt="user-photo" width="32" height="32" class="rounded-circle me-2">
+                            <strong>{{NAME}}</strong>
+                        </a>
+                        <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                            <li><a class="dropdown-item" href="#">New project...</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-9">
+                <!--Body content-->
+                <!--Put your code here and all the things that are to be rendered-->
+                <div class="container-fluid d-flex justify-content-center align-items-center my-2" style="text-align: center; background-color:#064663; color: white; border-radius: 10px;">
+                    We are privileged to be a part of F-line Services and honoured that you have chosen this portal for a great cause we promise to deliver out best !!
+                </div>
+                hello world
+                <div class="container d-flex justify-content-center align-items-center my-2" style="border: 2px solid green; border-radius: 10px;">
+                    My Account box
+                </div>
+                <div class="container d-flex justify-content-center align-items-center my-2" style="border: 2px solid red; border-radius: 10px;">
+                    My teams box
+                </div>
+                <div class="container d-flex justify-content-center align-items-center my-2" style="border: 2px solid blue; border-radius: 10px;">
+                    Registered NGOs box
+                </div>
+                <div class="container d-flex justify-content-center align-items-center my-2" style="border: 2px solid yellow; border-radius: 10px;">
+                    Registered Hotels box
+                </div>
+                <!-- Footer Start -->
+                <div class="container">
+                    <footer class="py-3 my-4">
+                        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                            <li class="nav-item"><a href="#navBar" class="nav-link px-2 text-muted">Home</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                            <li class="nav-item"><a href="aboutUs.html" class="nav-link px-2 text-muted">About</a></li>
+                        </ul>
+                        <p class="text-center text-muted">© 2022 F-Line Services Company, Inc</p>
+                        <div class="center">
+                            <a href="index.html#navBar" class="text-center text-muted">Back to top</a>
+                        </div>
+                    </footer>
+                </div>
+                <!-- Footer end -->
+            </div>
+        </div>
+    </div>
+    <!--middle section end-->
+
+
     
-    Welcome MR.{{NAME}} You successfully Logged IN
-    <img src="{{IMAGE.url}}" width=200px alt="">
 </body>
 </html>
