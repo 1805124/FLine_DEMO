@@ -32,7 +32,7 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div style="color: white;">
-                    Welcome {{NAME}}
+                    Welcome {{NAME}} 🔘{{TYPE}}
                 </div>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
                   <li class="nav-item">
@@ -83,11 +83,11 @@
                         <li>
                             <a href="#" class="nav-link link-dark">
                                 <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                                Dashboard
+                                DashBoard  
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="nav-link link-dark">
+                            <a href="#" class="nav-link link-dark" >
                                 <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
                                 Orders
                             </a>
@@ -116,8 +116,15 @@
                                 Registered Hotels
                             </a>
                         </li>
+                        <li>
+                            <a href="#" class="nav-link link-dark">
+                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                                Request Hotels 
+                            </a>
+                        </li>
                         {% endif %}
                         {% endblock %}
+                       
                     </ul>
                     <hr>
                     <div class="dropdown">
@@ -151,8 +158,23 @@
                 <div class="container d-flex justify-content-center align-items-center my-2" style="border: 2px solid blue; border-radius: 10px;">
                     Registered NGOs box
                 </div>
-                <div class="container d-flex justify-content-center align-items-center my-2" style="border: 2px solid yellow; border-radius: 10px;">
+                <div class="container d-flex flex-column justify-content-center align-items-center my-2" style="border: 2px solid yellow; border-radius: 10px;">
                     Registered Hotels box
+                    <div class="container d-flex  justify-content-center align-items-center" style="border:2px solid black ; border-radius:10px;">
+                        <div class="container">
+                            <img src="{{IMAGE.url}}" alt="user-photo" width="32" height="32" class="rounded-circle me-2">
+                        </div>
+                        <div class="container">
+                            {{NAME}}
+                        </div>
+                        <div class="container">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                                <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                            </svg>
+                        </div>    
+                    </div>
+                </div>
                 </div>
                 <!-- Footer Start -->
                 <div class="container">
