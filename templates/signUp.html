@@ -34,65 +34,75 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link active underline" id="home" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="aboutUs.html">About Us</a>
+                        <a class="nav-link active underline" id="aboutUs" href="aboutUs.html">About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="modal" data-bs-target="#exampleModal">Contact Us</a>
+                        <a class="nav-link active underline" id="contactUs" data-bs-toggle="modal" data-bs-target="#exampleModal">Contact Us</a>
                         <!-- Modal -->
-                            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <div class="container center">
-                                            <h5 class="modal-title" id="exampleModalLabel">Contact Form</h5>
+                                            <h5 class="modal-title" id="exampleModal`Label">Contact Form</h5>
                                         </div>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <div class="container ">
-                                            <div class="form-floating mb-3">
-                                                <input type="name" class="form-control" id="floatingInput" placeholder="Enter Your Name">
-                                                <label for="floatingInput">Name</label>
+                                        <form method="POST" action="https://formsubmit.co/kramanshikasiddharth@gmail.com" id="contactForm">
+                                            <div class="container ">
+                                                <div class="form-floating">
+                                                    <input type="hidden" name="_subject" value="New Form Inquiry!">
+                                                    <input type="hidden" name="_url" value="http://127.0.0.1:8000/index.html">
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" id="name" placeholder="Enter Your Name" name="Name">
+                                                    <label for="floatingInput">Name</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="email" class="form-control" id="emailId" placeholder="name@example.com" name="Email">
+                                                    <label for="floatingInput">Email address</label>
+                                                </div>
+                                                <div class="form-floating mb-3">
+                                                    <input type="number" class="form-control" id="contactNumber" placeholder="Enter your Contact number" name="Contact Number">
+                                                    <label for="floatingInput">Contact Number</label>
+                                                </div>
+                                                <p>Select the option your question is related to</p>
+                                                <div class="form-floating my-2">
+                                                    <select class="form-select" id="queryOptions" aria-label="Floating label select example" name="Query Option">
+                                                        <option selected>Click Here to Open menu</option>
+                                                        <option value="NGO">NGO</option>
+                                                        <option value="Hotels/Restaurants">Hotels/Restaurants</option>
+                                                        <option value="Distribution teams">Distribution teams</option>
+                                                    </select>
+                                                    <label for="floatingSelect">Choose your Option</label>
+                                                </div>
+                                                <p>Elaborate your query</p>
+                                                <div class="form-floating">
+                                                    <textarea class="form-control" placeholder="Leave a comment here" id="elaboratedQuery" style="height: 90px;width:450px;" aria-placeholder="" name="Elaborated Query"></textarea>
+                                                    <label for="floatingTextarea2">Click Here to start typing!</label>
+                                                </div>
+                                                <div class="container center d-flex justify-content-center align-items-center my-2">
+                                                    
+                                                </div>
                                             </div>
-                                            <div class="form-floating mb-3">
-                                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                                                <label for="floatingInput">Email address</label>
-                                            </div>
-                                            <div class="form-floating mb-3">
-                                                <input type="number" class="form-control" id="floatingInput" placeholder="Enter your Contact number">
-                                                <label for="floatingInput">Contact Number</label>
-                                            </div>
-                                            <p>Select the option your question is related to</p>
-                                            <div class="form-floating my-2">
-                                                <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                                    <option selected>Click Here to Open menu</option>
-                                                    <option value="1">NGO</option>
-                                                    <option value="2">Hotels/Restaurants</option>
-                                                    <option value="3">Distribution teams</option>
-                                                </select>
-                                                <label for="floatingSelect">Choose your Option</label>
-                                            </div>
-                                            <p>Elaborate your query</p>
-                                            <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 90px;width:450px;" aria-placeholder=""></textarea>
-                                                <label for="floatingTextarea2">Click Here to start typing!</label>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Submit</button>
+                                        <button class="btn btn-primary" id="contactFormButton" type="submit">Submit</button>
                                     </div>
-                                </div>
+                                        </form>
                                 </div>
                             </div>
-                        <!-- Modal -->
+                        </div>
+                    <!-- Modal -->
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <li class="nav-item dropdown" id="services">
+                        <a class="nav-link dropdown-toggle underline" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Services
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -109,7 +119,9 @@
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="btn btn-secondary navbar-dark bg-dark nav-link active" data-bs-toggle="modal" data-bs-target="#loginModal"> Log In </a>
+                            <div class="expandCard">
+                                <a class="btn btn-secondary navbar-dark bg-dark nav-link active" data-bs-toggle="modal" data-bs-target="#loginModal"> Log In </a>
+                            </div>
                             
                             <!-- Modal -->
                                 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -152,8 +164,8 @@
                                 </div>    
                         </li>
                         &nbsp;&nbsp;
-                        <li class="nav-item">
-                            <a class="btn btn-secondary navbar-dark bg-dark nav-link active" href="signUp.html"> Sign Up </a> 
+                        <li class="nav-item expandCard">
+                            <a class="btn btn-secondary navbar-dark bg-dark nav-link active " href="signUp.html"> Sign Up </a> 
                         </li>
                     </ul>
                 </div>
@@ -170,8 +182,8 @@
     </div>
     <div class="container center d-flex justify-content-center align-items-center ">
         <div class="row ">
-            <div class="col">
-                <div class="card" style="width: 18rem;">
+            <div class="col ">
+                <div class="card expandCard" style="width: 18rem;">
                     <img src="{% static 'Images/ngo_image2.jpg' %}" class="card-img-top" alt="ngo-image">
                     <div class="card-body">
                         <h5 class="card-title">NGO</h5>
@@ -182,7 +194,7 @@
             </div>
     
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <div class="card expandCard" style="width: 18rem;">
                     <img src="{% static 'Images/restaurant_image2.png' %}" class="card-img-top" alt="restaurant-image">
                     <div class="card-body">
                         <h5 class="card-title">Hotel/Restaurant</h5>
@@ -193,7 +205,7 @@
             </div>
         
             <div class="col">
-                <div class="card" style="width: 18rem;">
+                <div class="card expandCard" style="width: 18rem;">
                     <img src="{% static 'Images/team_image2.png' %}" class="card-img-top" alt="team-image">
                     <div class="card-body">
                         <h5 class="card-title">Distribution Teams</h5>
@@ -211,7 +223,7 @@
 <div class="container">
     <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="#navBar" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
@@ -219,13 +231,13 @@
     </ul>
     <p class="text-center text-muted">© 2022 F-Line Services Company, Inc</p>
     <div class="center">
-        <a href="index.html#navBar" class="text-center text-muted">Back to top</a>
+        <a href="#navBar" class="text-center text-muted">Back to top</a>
     </div>
     </footer>
 </div>
 <!-- Footer end -->
 
     <!-- JS -->
-    <script src="{% static 'JS/script.js' %}"></script>
+    <script type="text/javascript" src="{% static 'JS/expandCardsUnderline.js' %}"></script>
 </body>
 </html>
