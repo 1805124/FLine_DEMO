@@ -128,7 +128,7 @@ const email = document.forms["myForm"]["signUpEmail"];
 email.addEventListener('input',function(e){
     // console.log(e.target.name)
     let target = e.target.name;
-    if(target=="email"){
+    if(target=="req_email"){
         var email = document.forms["myForm"]["signUpEmail"].value;
         const emailFormat =/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
         const emailValid = emailFormat.test(email)
@@ -156,7 +156,7 @@ const password = document.forms["myForm"]["signUpPassword"]
 password.addEventListener('input', function (e){
     // console.log(e.target.name)
     let target = e.target.name;
-    if(target=="password"){
+    if(target=="passkey"){
         var password = document.forms["myForm"]["signUpPassword"].value;
         const passwordFormat =/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,30}$/;
         const passwordValid = passwordFormat.test(password)
@@ -185,7 +185,7 @@ const upload = document.forms["myForm"]["uploadtheimage"];
 upload.addEventListener('input',function (e){
     // console.log(e.target.name)
     let target = e.target.name;
-    if(target=="uploadtheimage"){
+    if(target=="image_upload"){
         var upload = document.forms["myForm"]["uploadtheimage"].value;
         var uploadFormat =/\.(png)$/;
         uploadValid = uploadFormat.test(upload);
