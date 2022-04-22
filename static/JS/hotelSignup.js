@@ -27,6 +27,9 @@ const invalidIcon = `
 const nameErrorMsg = `Name should contain min. 5 characters and max. 30 characters.
 `;
 
+const hotelNameErrorMsg = `Hotel Name should contain min. 5 characters and max. 30 characters.
+`;
+
 const validMsg = `Looks Good!
 `;
 
@@ -41,6 +44,9 @@ const passwordErrorMsg = `Please Enter a valid Password.
 `;
 
 const uploadErrorMsg = `Please Upload a .png File.
+`;
+
+const docUploadErrorMsg =`Please Upload .pdf File.
 `;
 
 
@@ -101,3 +107,168 @@ username.addEventListener('input',function (e) {
     }
     }
 })
+
+
+const hotelName = document.forms["myForm"]["NAME_HOTEL"];
+hotelName.addEventListener('input',function (e) {
+    console.log(e.target.name)
+    let target = e.target.name;
+    if (target == "HOTEL"){
+        var hotelName = document.forms["myForm"]["NAME_HOTEL"].value;
+    if((hotelName.length<=4)||(hotelName.length>30)){
+        setError("hotelNameMsg",hotelNameErrorMsg);
+        setError("hotelIcon",invalidIcon)
+        document.getElementById("hotelIcon").classList.add("invalidIcon")
+        document.getElementById("hotelIcon").classList.remove("validIcon")
+        document.getElementById("hotelNameMsg").classList.add("errorMsg")
+        document.getElementById("hotelNameMsg").classList.remove("validMsg")
+    }
+    else{
+        setValid("hotelNameMsg",validMsg)
+        setValid("hotelIcon",validIcon)
+        document.getElementById("hotelIcon").classList.add("validIcon")
+        document.getElementById("hotelIcon").classList.remove("invalidIcon")
+        document.getElementById("hotelNameMsg").classList.add("validMsg")
+        document.getElementById("hotelNameMsg").classList.remove("errorMsg")
+    }
+    }
+})
+
+const email = document.forms["myForm"]["signUpEmail"];
+email.addEventListener('input',function(e){
+    // console.log(e.target.name)
+    let target = e.target.name;
+    if(target=="HOTEL_EMAIL"){
+        var email = document.forms["myForm"]["signUpEmail"].value;
+        const emailFormat =/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+        const emailValid = emailFormat.test(email)
+        if(emailValid == false){
+            setError("emailMsg",emailErrorMsg)
+            setError("emailIcon",invalidIcon)
+            document.getElementById("emailIcon").classList.add("invalidIcon")
+            document.getElementById("emailIcon").classList.remove("validIcon")
+            document.getElementById("emailMsg").classList.add("errorMsg")
+            document.getElementById("emailMsg").classList.remove("validMsg")
+        }
+        else{
+            setValid("emailMsg",validMsg)
+            setValid("emailIcon",validIcon)
+            document.getElementById("emailIcon").classList.add("validIcon")
+            document.getElementById("emailIcon").classList.remove("invalidIcon")
+            document.getElementById("emailMsg").classList.add("validMsg")
+            document.getElementById("emailMsg").classList.remove("errorMsg")
+        }
+    }
+})
+
+//password validation 
+const password = document.forms["myForm"]["signUpPassword"]
+password.addEventListener('input', function (e){
+    // console.log(e.target.name)
+    let target = e.target.name;
+    if(target=="password1"){
+        var password = document.forms["myForm"]["signUpPassword"].value;
+        const passwordFormat =/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,30}$/;
+        const passwordValid = passwordFormat.test(password)
+        if(passwordValid == false){
+            setError("passwordMsg",passwordErrorMsg)
+            setError("passwordIcon",invalidIcon)
+            document.getElementById("passwordIcon").classList.add("invalidIcon")
+            document.getElementById("passwordIcon").classList.remove("validIcon")
+            document.getElementById("passwordMsg").classList.add("errorMsg")
+            document.getElementById("passwordMsg").classList.remove("validMsg")
+        }
+        else{
+            setValid("passwordMsg",validMsg)
+            setValid("passwordIcon",validIcon)
+            document.getElementById("passwordIcon").classList.add("validIcon")
+            document.getElementById("passwordIcon").classList.remove("invalidIcon")
+            document.getElementById("passwordMsg").classList.add("validMsg")
+            document.getElementById("passwordMsg").classList.remove("errorMsg")
+        }
+    }
+})
+
+
+//contact number validation
+const contactNumber = document.forms["myForm"]["hotel_contact"];
+contactNumber.addEventListener('input',function (e){
+    console.log(e.target.name)
+    let target = e.target.name;
+    if (target=="hotel_phone"){
+        var contactNumber = document.forms["myForm"]["hotel_contact"].value;
+        if(contactNumber.length!=10){
+            setError("contactNumberMsg",contactNumberErrorMsg)
+            setError("contactIcon",invalidIcon)
+            document.getElementById("contactIcon").classList.add("invalidIcon")
+            document.getElementById("contactIcon").classList.remove("validIcon")
+            document.getElementById("contactNumberMsg").classList.add("errorMsg")
+            document.getElementById("contactNumberMsg").classList.remove("validMsg")
+        }
+        else{
+            setValid("contactNumberMsg",validMsg)
+            setValid("contactIcon",validIcon)
+            document.getElementById("contactIcon").classList.add("validIcon")
+            document.getElementById("contactIcon").classList.remove("invalidIcon")
+            document.getElementById("contactNumberMsg").classList.add("validMsg")
+            document.getElementById("contactNumberMsg").classList.remove("errorMsg")
+        }
+    
+    }
+})
+
+//upload validation
+const upload = document.forms["myForm"]["UploadedImage1"];
+upload.addEventListener('input',function (e){
+    // console.log(e.target.name)
+    let target = e.target.name;
+    if(target=="UploadedImage"){
+        var upload = document.forms["myForm"]["UploadedImage1"].value;
+        var uploadFormat =/\.(png)$/;
+        uploadValid = uploadFormat.test(upload);
+        if(uploadValid == false){
+            setError("uploadMsg",uploadErrorMsg)
+            setError("uploadIcon",invalidIcon)
+            document.getElementById("uploadIcon").classList.add("invalidIcon")
+            document.getElementById("uploadIcon").classList.remove("validIcon")
+            document.getElementById("uploadMsg").classList.add("errorMsg")
+            document.getElementById("uploadMsg").classList.remove("validMsg")
+        }
+        else{
+            setValid("uploadMsg",validMsg)
+            setValid("uploadIcon",validIcon)
+            document.getElementById("uploadIcon").classList.add("validIcon")
+            document.getElementById("uploadIcon").classList.remove("invalidIcon")
+            document.getElementById("uploadMsg").classList.add("validMsg")
+            document.getElementById("uploadMsg").classList.remove("errorMsg")
+        }
+    }
+} )
+
+//document upload validation
+const docUpload = document.forms["myForm"]["UploadedDoc"];
+docUpload.addEventListener('input',function (e){
+    // console.log(e.target.name)
+    let target = e.target.name;
+    if(target=="auth_image"){
+        var upload = document.forms["myForm"]["UploadedDoc"].value;
+        var uploadFormat =/\.(pdf)$/;
+        uploadValid = uploadFormat.test(upload);
+        if(uploadValid == false){
+            setError("docUploadMsg",docUploadErrorMsg)
+            setError("docUploadIcon",invalidIcon)
+            document.getElementById("docUploadIcon").classList.add("invalidIcon")
+            document.getElementById("docUploadIcon").classList.remove("validIcon")
+            document.getElementById("docUploadMsg").classList.add("errorMsg")
+            document.getElementById("docUploadMsg").classList.remove("validMsg")
+        }
+        else{
+            setValid("docUploadMsg",validMsg)
+            setValid("docUploadIcon",validIcon)
+            document.getElementById("docUploadIcon").classList.add("validIcon")
+            document.getElementById("docUploadIcon").classList.remove("invalidIcon")
+            document.getElementById("docUploadMsg").classList.add("validMsg")
+            document.getElementById("docUploadMsg").classList.remove("errorMsg")
+        }
+    }
+} )
