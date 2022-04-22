@@ -169,6 +169,8 @@
                     {% block req1 %}
                     {% for i in HOTELS %}
                     <div class="container d-flex  justify-content-center align-items-center" style="border:2px solid black;">
+                    <form action="" method="post" enctype="multipart/form-data" >
+                        {% csrf_token %}
                         <div class="container">
                             <img src="{{i.hotel_image_upload.url}}" alt="user-photo" width="32" height="32" class="rounded-circle me-2">
                         </div>
@@ -180,7 +182,9 @@
                                 <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
                                 <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
                             </svg>
-                        </div>    
+                        </div>
+                        
+                    </form>    
                     </div>
                     {% endfor %}
                     {% endblock %}
