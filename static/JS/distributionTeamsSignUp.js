@@ -104,7 +104,7 @@ const email = document.forms["myForm"]["signUpEmail"];
 email.addEventListener('input',function(e){
     // console.log(e.target.name)
     let target = e.target.name;
-    if(target=="email"){
+    if(target=="req_email"){
         var email = document.forms["myForm"]["signUpEmail"].value;
         const emailFormat =/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
         const emailValid = emailFormat.test(email)
