@@ -73,6 +73,7 @@ def login(request):
             for a in data3:
                 if (a.passkey == password):
                     print("validated .. Login Successfull as NGO")
+                    hotels = hotelsignup.objects.filter(ZONE=a.ZONE)
                     context={
                         "NAME":a.req_name,
                         "CONTACT":a.req_phone,
@@ -81,7 +82,8 @@ def login(request):
                         "AREA":a.AREA,
                         "CAPACITY":a.CAPACITY,
                         "IMAGE":a.image_upload,
-                        "TYPE":"NGO"
+                        "TYPE":"NGO",
+                        "HOTELS":hotels
                     }
                     return render(request,"dash.html",context) 
                 else:

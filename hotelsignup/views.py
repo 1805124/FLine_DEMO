@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from hotelsignup import models
-from hotelsignup.models import hotelsignup,USERS
+from hotelsignup.models import hotelsignup as hotelmodel
 # Create your views here.
 def hotelsignup(request):
     print("HELLO")
@@ -23,12 +23,13 @@ def hotelsignup(request):
             b_auth = True
         ins = models.hotelsignup(req_name=req_name,hotel_name=hotel_name,hotel_phone = hotel_Phone,hotel_email= hotel_Email,password=password1,ZONE=hotel_zone,CAPACITY=hotel_sub,hotel_image_upload=profile_pic,auth_doc_upload=auth_pic,author=b_auth)
         ins.save()
+        hoteldata= hotelmodel.objects.get(hotel_email=hotel_Email)
         print("THE DATA ADDED FROM HOTELSIGNUP")
     else:
         print("NOT A POST")
     context={
         "NAME": req_name,
-        "IMAGE" : profile_pic,
+        "IMAGE" : hoteldata.hotel_image_upload,
         "HOTEL_NAME":hotel_name,
         "HOTEL_EMAIL":hotel_Email,
         "CONTACT":hotel_Phone,
@@ -36,7 +37,7 @@ def hotelsignup(request):
         "ZONE":hotel_zone,
         "AUTH_DOC":auth_pic,
         "AUTH":author,
-        "TYPE":"hotel"
+        "TYPE":"HOTEL"
     }
     return render(request,"dash.html",context)
 
