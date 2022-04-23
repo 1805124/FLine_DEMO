@@ -160,18 +160,29 @@
                 </div>
                 <div class="container d-flex justify-content-center align-items-center my-2" style="border: 2px solid red; border-radius: 10px;">
                     My teams box
+                    {% block SUBSC %}
+                    {% for i in SUBSCRIPTIONS %}
+                    <div class="container">{{i.hotel_sub}} {{i.ngo_sub}}{{i.sub_date}}{{i.days}}</div>
+                    {% endfor %}
+                    {% endblock %}
                 </div>
                 <div class="container d-flex justify-content-center align-items-center my-2" style="border: 2px solid blue; border-radius: 10px;">
                     Registered NGOs box
                     {% block req%}
                     {% for i in REQUESTS %}
                     <form action="accept" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
                         <div class="container">
+                            <input type="hidden" name="hotel_sub" value="{{i.receiever}}">
+                            <input type="hidden" name="ngo_sub" value="{{i.sender}}">
+                            <input type="hidden" name="day_count" value="{{i.day_count}}">
+                            <input type="hidden" name="identifier" value="{{i.id}}">
+                            {{i.receiver}}
                             {{i.sender}}
-                            {{i.head_count}}
+                            {{i.day_count}}
                             {{i.time}}
                             <button type="submit" >accept</button>
-                            <button type="submit" >reject</button>
+                            <button type="submit" formaction="reject" formmethod="POST" formenctype="multipart/form-data">reject</button>
                         </div>
                     </form>
                     {% endfor %}
@@ -183,7 +194,7 @@
                     </div>
                     {% block req1 %}
                     {% for i in HOTELS %}
-                    <div class="container d-flex  justify-content-center align-items-center " style="margin:3px;">
+                    <div class="container d-flex  justify-content-center align-items-center styleform" style="margin:3px;">
                         <form action="req_sent" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="container d-flex  justify-content-center align-items-center bd-highlight hotelInfoBody my-2">
