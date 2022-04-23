@@ -62,13 +62,13 @@ function setValid(id,valid){
 
 
 
-const ngoFormButtonClick = document.getElementById("ngoFormButton")
+// const ngoFormButtonClick = document.getElementById("ngoFormButton")
 
-ngoFormButtonClick.addEventListener('click',function validateForm (event) {
-    event.preventDefault();
-    clearErrors();
-    //perform validation and if validation fails , set the value of defaultReturnValue to false.
-})
+// ngoFormButtonClick.addEventListener('click',function validateForm (event) {
+//     event.preventDefault();
+//     clearErrors();
+//     //perform validation and if validation fails , set the value of defaultReturnValue to false.
+// })
 
 // name validation
 const username = document.forms["myForm"]["requester_name"];

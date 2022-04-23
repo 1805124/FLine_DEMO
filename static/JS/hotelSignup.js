@@ -74,13 +74,13 @@ function setValid(id,valid){
 
 
 
-const hotelFormButtonClick = document.getElementById("hotelFormButton")
+// const hotelFormButtonClick = document.getElementById("hotelFormButton")
 
-hotelFormButtonClick.addEventListener('click',function validateForm (event) {
-    event.preventDefault();
-    clearErrors();
-    //perform validation and if validation fails , set the value of defaultReturnValue to false.
-})
+// hotelFormButtonClick.addEventListener('click',function validateForm (event) {
+//     event.preventDefault();
+//     clearErrors();
+//     //perform validation and if validation fails , set the value of defaultReturnValue to false.
+// })
 
 // name validation
 const username = document.forms["myForm"]["requester_name"];

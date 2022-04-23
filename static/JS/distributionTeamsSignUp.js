@@ -64,13 +64,13 @@ function setValid(id,valid){
 }
 
 
-const distributionTeamsFormButtonClick = document.getElementById("distributionTeamFormButton")
+// const distributionTeamsFormButtonClick = document.getElementById("distributionTeamFormButton")
 
-distributionTeamsFormButtonClick.addEventListener('click',function validateForm (event) {
-    event.preventDefault();
-    clearErrors();
-    //perform validation and if validation fails , set the value of defaultReturnValue to false.
-})
+// distributionTeamsFormButtonClick.addEventListener('click',function validateForm (event) {
+//     event.preventDefault();
+//     clearErrors();
+//     //perform validation and if validation fails , set the value of defaultReturnValue to false.
+// })
 
 
 // name validation

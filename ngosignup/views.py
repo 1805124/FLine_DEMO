@@ -29,10 +29,11 @@ def ngosignup(request):
         
         ins = models.ngosignup(req_name=req_name,req_phone=contact_no,req_email=email,passkey=passkey,ZONE=zone,AREA=area,CAPACITY=capacity,image_upload=image_upload,author=b_auth)
         ins.save()
+        loc= ngosignup.objects.get(req_email=email)
         print("The DATA HAS BEEN ADDED TO THE DB")
         context={
             "NAME" :req_name,
-            "IMAGE":image_upload,
+            "IMAGE":loc.image_upload,
             "CONTACT":contact_no,
             "EMAIL":email,
             "ZONE":zone,
