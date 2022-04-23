@@ -5,6 +5,7 @@ font-family: 'Open Sans' , sans-serif;
 font-family: 'Pacifico'  , cursive;
 font-family: 'Roboto'    , sans-serif;
 font-family: 'Ubuntu'    , sans-serif;
+font-family: 'Orelega One', cursive;
 */
 
 
@@ -17,6 +18,11 @@ font-family: 'Ubuntu'    , sans-serif;
 #passwordHelpBlock{
     width: 100%;
 }
+
+#addColor{
+    color: #4D96FF;
+}
+
 
 /* Class Selectors */
 
@@ -151,7 +157,56 @@ font-family: 'Ubuntu'    , sans-serif;
     color: red;
 }
 
+.ngoRequest{
+    border-radius: 100px;
+    position: relative;
+    top: 2px;
+}
 
+.hotelName{
+    font-family: 'Roboto' , sans-serif;
+    width: 450px;
+}
+
+
+
+.hotelInfoBody{
+    background-color: #40DFEF;
+    border-radius: 10px;
+    /* border:2px solid black; */
+    box-shadow: 5px 5px 5px lightblue;
+    
+}
+
+.hotelImage{
+    border: 2px solid #064663;
+    margin: 4px;
+}
+
+.headCount{
+    width: 112px;
+}
+
+.hiddenInfo{
+    display: none;
+}
+
+.hotelListMsg{
+    color: #F5F5DC;
+    text-shadow: 2px 2px 4px #000000;
+    border:1px solid black;
+    border-radius: 50px;
+    font-family: 'Orelega One', cursive;
+    font-size: xx-large;
+    background-color: grey;
+}
+
+.registeredHotelsBox{
+    border: 2px solid orange;
+    border-radius: 10px;
+    background-color: lavender;
+
+}
 
 /* Html Selectors */
 

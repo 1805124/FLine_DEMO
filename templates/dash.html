@@ -16,7 +16,7 @@
         <!-- Google Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&family=Open+Sans&family=Pacifico&family=Roboto&family=Ubuntu&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&family=Open+Sans&family=Pacifico&family=Roboto&family=Orelega+One&family=Ubuntu&display=swap" rel="stylesheet">
         
         <!-- CSS-->
         <link rel="stylesheet" href="{% static '/CSS/styles.css' %}" type="text/css">
@@ -70,7 +70,7 @@
                 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
                     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
                         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                        <span class="fs-4">Functionalities</span>
+                        <span class="fs-4">NGO CENTER</span>
                     </a>
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
@@ -154,7 +154,7 @@
                 <div class="container-fluid d-flex justify-content-center align-items-center my-2" style="text-align: center; background-color:#064663; color: white; border-radius: 10px;">
                     We are privileged to be a part of F-line Services and honoured that you have chosen this portal for a great cause we promise to deliver out best !!
                 </div>
-                hello world
+                
                 <div class="container d-flex justify-content-center align-items-center my-2" style="border: 2px solid green; border-radius: 10px;">
                     My Account box
                 </div>
@@ -166,7 +166,7 @@
                     {% block req%}
                     {% for i in REQUESTS %}
                     <form action="accept" method="POST" enctype="multipart/form-data">
-                         <div class="container">
+                        <div class="container">
                             {{i.sender}}
                             {{i.head_count}}
                             {{i.time}}
@@ -177,35 +177,38 @@
                     {% endfor %}
                     {% endblock %}
                 </div>
-                <div class="container d-flex flex-column justify-content-center align-items-center my-2" style="border: 2px solid yellow; border-radius: 10px;">
-                    Registered Hotels box
+                <div class="container d-flex flex-column justify-content-center align-items-center my-2 registeredHotelsBox" >
+                    <div class="container d-flex justify-content-center align-items-center my-2 hotelListMsg">
+                        List of Registered Hotels/Restaurants in your zone
+                    </div>
                     {% block req1 %}
                     {% for i in HOTELS %}
-                    <div class="container d-flex  justify-content-center align-items-center" style="border:2px solid black;">
-                    <form action="req_sent" method="POST" enctype="multipart/form-data" >
-                        {% csrf_token %}
-                        <input type="hidden" name="sender_mail" value="{{EMAIL}}">
-                        <div class="container">
-                            <img src="{{i.hotel_image_upload.url}}" alt="user-photo" width="32" height="32" class="rounded-circle me-2">
-                        </div>
-                        <div class="container">
-                            <input type="hidden" value="{{i.hotel_email}}" name="hotel_email">
-                        </div>
-                        <div class="container">
-                            {{i.hotel_name}}
-                        </div>
-                        <div class="container">
-                            <input type="number" class="" id="" name="head_count" placeholder="Head Count" maxlength="2">
-                        </div>
-                        <button type="submit">
-                        <div class="container" >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
-                                <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
-                            </svg>
-                        </div>
-                    </button>
-                    </form>    
+                    <div class="container d-flex  justify-content-center align-items-center " style="margin:3px;">
+                        <form action="req_sent" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="container d-flex  justify-content-center align-items-center bd-highlight hotelInfoBody my-2">
+                                <div class="container hiddenInfo">
+                                    <input type="hidden" name="sender_mail" value="{{EMAIL}}">
+                                </div>
+                                <div class="container" >
+                                    <img src="{{i.hotel_image_upload.url}}" alt="user-photo" width="40" height="40" class="rounded-circle me-2 hotelImage">
+                                </div>
+                                <div class="container hiddenInfo">
+                                    <input type="hidden" value="{{i.hotel_email}}" name="hotel_email">
+                                </div>
+                                <div class="container p-2 flex-fill bd-highlight hotelName">
+                                    {{i.hotel_name}}
+                                </div>
+                                <div class="container">
+                                    <input type="number" class="rounded-3 headCount" id="" name="head_count" placeholder="Head Count" maxlength="2">
+                                </div>
+                                <button type="submit" class="ngoRequest" id="addColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                        </svg>
+                                </button>
+                            </div>
+                        </form>    
                     </div>
                     {% endfor %}
                     {% endblock %}
