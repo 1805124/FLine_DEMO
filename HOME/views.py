@@ -3,7 +3,7 @@ from distributionteamsignup.models import USERS
 from hotelsignup.models import hotelsignup
 from ngosignup.models import ngosignup 
 from django.contrib import messages
-
+from dashboard.models import request_manage
 
 # Create your views here.
 def index(request):
@@ -53,6 +53,7 @@ def login(request):
             for a in data2:
                 if (a.password == password):
                     print("validated .. Login Successfull as HOTEL")
+                    requests = request_manage.objects.filter(receiever=email)
                     context={
                         "NAME":a.req_name,
                         "HOTEL_NAME":a.hotel_name,
@@ -62,7 +63,9 @@ def login(request):
                         "CAPACITY":a.CAPACITY,
                         "IMAGE":a.hotel_image_upload,
                         "AUTH_DOC":a.auth_doc_upload,
-                        "TYPE":"HOTEL"
+                        "TYPE":"HOTEL",
+                        "REQUESTS":requests
+
                     }
                     return render(request,"dash.html",context) 
                 else:

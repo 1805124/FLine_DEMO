@@ -163,27 +163,48 @@
                 </div>
                 <div class="container d-flex justify-content-center align-items-center my-2" style="border: 2px solid blue; border-radius: 10px;">
                     Registered NGOs box
+                    {% block req%}
+                    {% for i in REQUESTS %}
+                    <form action="accept" method="POST" enctype="multipart/form-data">
+                         <div class="container">
+                            {{i.sender}}
+                            {{i.head_count}}
+                            {{i.time}}
+                            <button type="submit" >accept</button>
+                            <button type="submit" >reject</button>
+                        </div>
+                    </form>
+                    {% endfor %}
+                    {% endblock %}
                 </div>
                 <div class="container d-flex flex-column justify-content-center align-items-center my-2" style="border: 2px solid yellow; border-radius: 10px;">
                     Registered Hotels box
                     {% block req1 %}
                     {% for i in HOTELS %}
                     <div class="container d-flex  justify-content-center align-items-center" style="border:2px solid black;">
-                    <form action="" method="post" enctype="multipart/form-data" >
+                    <form action="req_sent" method="POST" enctype="multipart/form-data" >
                         {% csrf_token %}
+                        <input type="hidden" name="sender_mail" value="{{EMAIL}}">
                         <div class="container">
                             <img src="{{i.hotel_image_upload.url}}" alt="user-photo" width="32" height="32" class="rounded-circle me-2">
+                        </div>
+                        <div class="container">
+                            <input type="hidden" value="{{i.hotel_email}}" name="hotel_email">
                         </div>
                         <div class="container">
                             {{i.hotel_name}}
                         </div>
                         <div class="container">
+                            <input type="number" class="" id="" name="head_count" placeholder="Head Count" maxlength="2">
+                        </div>
+                        <button type="submit">
+                        <div class="container" >
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
                                 <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
                             </svg>
                         </div>
-                        
+                    </button>
                     </form>    
                     </div>
                     {% endfor %}

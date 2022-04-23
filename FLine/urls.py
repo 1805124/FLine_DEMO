@@ -21,5 +21,6 @@ urlpatterns = [
     path('',include('HOME.urls')),
     path('',include('ngosignup.urls')),
     path('',include('hotelsignup.urls')),
-    path('',include('distributionteamsignup.urls'))
+    path('',include('distributionteamsignup.urls')),
+    path('',include('dashboard.urls')),
 ]
