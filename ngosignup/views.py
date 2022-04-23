@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from ngosignup import models
-from ngosignup.models import ngosignup,USERS
+from ngosignup.models import ngosignup as ngomodel
+from distributionteamsignup.models import USERS
 
 # Create your views here.
 def ngosignup(request):
@@ -29,7 +30,7 @@ def ngosignup(request):
         
         ins = models.ngosignup(req_name=req_name,req_phone=contact_no,req_email=email,passkey=passkey,ZONE=zone,AREA=area,CAPACITY=capacity,image_upload=image_upload,author=b_auth)
         ins.save()
-        loc= ngosignup.objects.get(req_email=email)
+        loc= ngomodel.objects.get(req_email=email)
         print("The DATA HAS BEEN ADDED TO THE DB")
         context={
             "NAME" :req_name,
