@@ -311,6 +311,13 @@
 </script>
 {% endif %}
 {% endblock %}
+{% block alertmessege2 %}
+{% if email_present  %}
+<script>
+    alert("{{email_present}}")
+</script>
+{% endif %}
+{% endblock %}
 
 <!-- JS -->
     <script type="text/javascript" src="{% static 'JS/expandCardsUnderline.js' %}"></script>

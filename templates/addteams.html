@@ -1,76 +1,75 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>🍞 F-Line Services</title>
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="{% static 'Favicon/favicon.ico' %}">
+        
+        <!-- Bootstrap CSS and JS  -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>      
+        
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&family=Open+Sans&family=Pacifico&family=Roboto&family=Ubuntu&display=swap" rel="stylesheet">
+        
+        <!-- CSS-->
+        <link rel="stylesheet" href="{% static '/CSS/TEAM.css' %}" type="text/css">
 </head>
-<body>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle underline" id="services" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Services
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="#">Subscription Type-i</a></li>
-        <li><a class="dropdown-item" href="#">Subscription Type-ii</a></li>
-        <li><a class="dropdown-item" href="#">Subscription Type-iii</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Support</a></li>
-        <li><a class="dropdown-item" href="#">Review Us!!</a></li>
-        </ul>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle underline" id="services" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Services
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="#">Subscription Type-i</a></li>
-        <li><a class="dropdown-item" href="#">Subscription Type-ii</a></li>
-        <li><a class="dropdown-item" href="#">Subscription Type-iii</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Support</a></li>
-        <li><a class="dropdown-item" href="#">Review Us!!</a></li>
-        </ul>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle underline" id="services" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Services
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="#">Subscription Type-i</a></li>
-        <li><a class="dropdown-item" href="#">Subscription Type-ii</a></li>
-        <li><a class="dropdown-item" href="#">Subscription Type-iii</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Support</a></li>
-        <li><a class="dropdown-item" href="#">Review Us!!</a></li>
-        </ul>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle underline" id="services" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Services
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="#">Subscription Type-i</a></li>
-        <li><a class="dropdown-item" href="#">Subscription Type-ii</a></li>
-        <li><a class="dropdown-item" href="#">Subscription Type-iii</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Support</a></li>
-        <li><a class="dropdown-item" href="#">Review Us!!</a></li>
-        </ul>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle underline" id="services" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Services
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <li><a class="dropdown-item" href="#">Subscription Type-i</a></li>
-        <li><a class="dropdown-item" href="#">Subscription Type-ii</a></li>
-        <li><a class="dropdown-item" href="#">Subscription Type-iii</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Support</a></li>
-        <li><a class="dropdown-item" href="#">Review Us!!</a></li>
-        </ul>
-    </li>
+<body id="bg" style="background-image: url('{% static "images/FOOD BACKGROUND.jpg" %}')";>
+    <form action="/action_page.php">
+        <label for="cars">Choose a person:</label>
+        <select name="cars" id="cars">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+      <form action="/action_page.php">
+        <label for="cars">Choose a car:</label>
+        <select name="cars" id="cars">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+      <form action="/action_page.php">
+        <label for="cars">Choose a car:</label>
+        <select name="cars" id="cars">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+      <form action="/action_page.php">
+        <label for="cars">Choose a car:</label>
+        <select name="cars" id="cars">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+
+
+
+
+   
 </body>
 </html>

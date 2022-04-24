@@ -61,7 +61,6 @@
           </nav>
         <!--Navbar start-->
     <!--Header end-->
-          <div class="hello">HELLO</div>
     <!--middle section start-->
     <div class="container-fluid">
         <div class="row">
@@ -187,25 +186,45 @@
                     My teams box
                     {% block addteam%}
                     {% if TYPE == "NGO" %}
-                    <button href="addteams.html" ></button>
+                    <a action="addteam" href="addteams.html" style="border:1px solid red ;border-radius:50%; align-items: center;text-align: center;">+</a>
+
                     {% endif %}
                     {% endblock %}
+
                     {% block SUBSC %}
                     {% for i in SUBSCRIPTIONS %}
                     <div class="container">{{i.hotel_sub}} {{i.ngo_sub}}{{i.sub_date}}{{i.days}}</div>
                     {% endfor %}
                     {% endblock %}
                 </div>
+                
                 <div class="container d-flex justify-content-center flex-column align-items-center my-2 requestingNgosBox" style="border: 2px solid blue; border-radius: 10px;background: #DFDCE5FF;">
+                    {% block req%}
+                    {% if TYPE == "NGO" %}
+                    <div class="container d-flex justify-content-center align-items-center my-2 ngoListMsg" style="border: 1px solid black; border-radius: 50px;font-size: xx-large;font-family: 'Orelega One', cursive; text-shadow: 2px 2px 4px #000000;color: #F5F5DC;background-color: #97B3D0FF;">
+                        OUR SUBSCRIBED HOTELS & RESTURENTS
+                    </div>
+                    {% for i in SUBSCRIPTIONS_HOTELS %}
+                    <div class="container d-flex justify-content-center align-items-center styleform" style="margin:3px">
+                    <div class="container d-flex justify-content-center ngoInfoBody align-items-center my-3 expandCardShadowLess" style="border-radius: 50px;background-color: 	#FF8C00;border-radius: 50px;/* border:2px solid black; */;box-shadow: 5px 5px 5px #FFB07C;transition: 0.7s ease; padding-top: 6px;padding-bottom: 6px; font-family: 'Roboto' , sans-serif;" onmouseover="this.style.boxShadow='0px 0px 5px 5px #F7FF93'" onmouseleave="this.style.boxShadow='5px 5px 5px #FFB07C'">
+                                {{i.hotel_sub}}
+                                {{i.ngo_sub}}
+                                {{i.days}}
+                            </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% if TYPE == "HOTEL" %}
                     <div class="container d-flex justify-content-center align-items-center my-2 ngoListMsg" style="border: 1px solid black; border-radius: 50px;font-size: xx-large;font-family: 'Orelega One', cursive; text-shadow: 2px 2px 4px #000000;color: #F5F5DC;background-color: #97B3D0FF;">
                         List of Requesting NGOs
+
                     </div>
-                    {% block req%}
+                    
                     {% for i in REQUESTS %}
                     <div class="container d-flex justify-content-center align-items-center styleform" style="margin:3px">
                         <form action="accept" method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
-                            <div class="container d-flex justify-content-center ngoInfoBody align-items-center my-3 expandCardShadowLess" style="border-radius: 50px;background-color: 	#FF8C00;border-radius: 50px;/* border:2px solid black; */;box-shadow: 5px 5px 5px #FFB07C;transition: 0.2s ease; padding-top: 6px;padding-bottom: 6px; font-family: 'Roboto' , sans-serif;" onmouseover="this.style.boxShadow='5px 5px 5px #F7FF93'" onmouseleave="this.style.boxShadow='5px 5px 5px #FFB07C'">
+                            <div class="container d-flex justify-content-center ngoInfoBody align-items-center my-3 expandCardShadowLess" style="border-radius: 50px;background-color: 	#FF8C00;border-radius: 50px;/* border:2px solid black; */;box-shadow: 5px 5px 5px #FFB07C;transition: 0.7s ease; padding-top: 6px;padding-bottom: 6px; font-family: 'Roboto' , sans-serif;" onmouseover="this.style.boxShadow='0px 0px 5px 5px #F7FF93'" onmouseleave="this.style.boxShadow='5px 5px 5px #FFB07C'">
                                 <input type="hidden" name="hotel_sub" value="{{i.receiever}}">
                                 <input type="hidden" name="ngo_sub" value="{{i.sender}}">
                                 <input type="hidden" name="day_count" value="{{i.day_count}}">
@@ -230,6 +249,7 @@
                         </form>
                     </div>
                     {% endfor %}
+                    {% endif %}
                     {% endblock %}
                 </div>
                 <div class="container d-flex flex-column justify-content-center align-items-center my-2 registeredHotelsBox" >
@@ -237,6 +257,7 @@
                         List of Registered Hotels/Restaurants in your zone
                     </div>
                     {% block req1 %}
+                    {% if TYPE == "NGO" %}
                     {% for i in HOTELS %}
                     <div class="container d-flex  justify-content-center align-items-center styleform" style="margin:3px;">
                         <form action="req_sent" method="POST" enctype="multipart/form-data">
@@ -266,6 +287,7 @@
                         </form>    
                     </div>
                     {% endfor %}
+                    {% endif %}
                     {% endblock %}
                 </div>
                 </div>

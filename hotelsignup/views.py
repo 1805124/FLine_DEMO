@@ -21,6 +21,10 @@ def hotelsignup(request):
             b_auth = False
         else:
             b_auth = True
+        prevdat = hotelmodel.objects.filter(hotel_email=hotel_Email)
+        if(len(prevdat)>0):
+          dir={"email_present":"Email id Alredy Existed Try to LOGIN "}
+          return render(request,"index.html",dir) 
         ins = models.hotelsignup(req_name=req_name,hotel_name=hotel_name,hotel_phone = hotel_Phone,hotel_email= hotel_Email,password=password1,ZONE=hotel_zone,CAPACITY=hotel_sub,hotel_image_upload=profile_pic,auth_doc_upload=auth_pic,author=b_auth)
         ins.save()
         hoteldata= hotelmodel.objects.get(hotel_email=hotel_Email)

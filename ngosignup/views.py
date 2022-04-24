@@ -2,6 +2,7 @@ from django.shortcuts import render
 from ngosignup import models
 from ngosignup.models import ngosignup as ngomodel
 from distributionteamsignup.models import USERS
+from hotelsignup.models import hotelsignup 
 
 # Create your views here.
 def ngosignup(request):
@@ -27,7 +28,12 @@ def ngosignup(request):
            b_auth = False
         else:
             b_auth = True    
-        
+        prevdat = ngomodel.objects.filter(req_email=email)
+        prevdat2 = USERS.objects.filter(req_email=email)
+        prevdat3 = hotelsignup.objects.filter(hotel_email=email)
+        if(len(prevdat)+len(prevdat2)+len(prevdat3)>0):
+           dir = {"email_present":"Email id Alredy Existed Try to LOGIN "}
+           return render(request,"index.html",dir) 
         ins = models.ngosignup(req_name=req_name,req_phone=contact_no,req_email=email,passkey=passkey,ZONE=zone,AREA=area,CAPACITY=capacity,image_upload=image_upload,author=b_auth)
         ins.save()
         loc= ngomodel.objects.get(req_email=email)

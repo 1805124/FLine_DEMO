@@ -4,7 +4,7 @@ from hotelsignup.models import hotelsignup
 from ngosignup.models import ngosignup 
 from django.contrib import messages
 from dashboard.models import request_manage
-
+from dashboard.models import subscription
 # Create your views here.
 def index(request):
     return render(request,'index.html') 
@@ -77,6 +77,7 @@ def login(request):
                 if (a.passkey == password):
                     print("validated .. Login Successfull as NGO")
                     hotels = hotelsignup.objects.filter(ZONE=a.ZONE)
+                    subs_hotel = subscription.objects.filter(ngo_sub=email)
                     context={
                         "NAME":a.req_name,
                         "CONTACT":a.req_phone,
@@ -87,7 +88,8 @@ def login(request):
                         "IMAGE":a.image_upload,
                         "TYPE":"NGO",
                         "HOTELS":hotels,
-                        "id":a.id
+                        "id":a.id,
+                        "SUBSCRIPTIONS_HOTELS":subs_hotel
                     }
                     return render(request,"dash.html",context) 
                 else:

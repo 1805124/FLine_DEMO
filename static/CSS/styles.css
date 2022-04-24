@@ -18,7 +18,6 @@ font-family: 'Orelega One', cursive;
 #passwordHelpBlock{
     width: 100%;
 }
-
 #addColor{
     color: #4D96FF;
 }
@@ -96,7 +95,7 @@ font-family: 'Orelega One', cursive;
 }
 
 .expandCard {
-    transition: transform 0.2s ease;
+    transition: transform 0.7s ease;
     box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
     border-radius: 0;
     border: 0;
@@ -107,7 +106,7 @@ font-family: 'Orelega One', cursive;
 }
 
 .expandCardShadowLess {
-    transition: transform 0.2s ease;
+    transition: transform 0.7s ease;
     border-radius: 0;
     border: 0;
 }
@@ -177,17 +176,17 @@ font-family: 'Orelega One', cursive;
 
 
 
-.hotelInfoBody{
+.hotelInfoBody , .hotelform {
     background-color: #40DFEF;
     border-radius: 10px;
     /* border:2px solid black; */
     box-shadow: 5px 5px 5px lightblue;
-    transition: 0.2s ease;
+    transition: 0.7s ease;
     
 }
 
 .hotelInfoBody:hover{
-    box-shadow: 5px 5px 5px #F7FF93;
+    box-shadow: 0px 0px 5px 5px #F7FF93;
 }
 
 .hotelImage{
@@ -242,4 +241,10 @@ h3{
 .hello
 {
     border: 10px solid red;   
+}
+
+.teambody
+{
+    align-items: center;
+    justify-content:center ;
 }
