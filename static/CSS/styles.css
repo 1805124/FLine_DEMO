@@ -102,6 +102,15 @@ font-family: 'Orelega One', cursive;
     border: 0;
 }
 
+.expandCardShadowLess:hover {
+    transform: scale(1.1);
+}
+
+.expandCardShadowLess {
+    transition: transform 0.2s ease;
+    border-radius: 0;
+    border: 0;
+}
 /* .underline{
     text-decoration: underline;
 } */
@@ -157,10 +166,8 @@ font-family: 'Orelega One', cursive;
     color: red;
 }
 
-.ngoRequest{
+.hotelRequestBtn{
     border-radius: 100px;
-    position: relative;
-    top: 2px;
 }
 
 .hotelName{
@@ -175,9 +182,13 @@ font-family: 'Orelega One', cursive;
     border-radius: 10px;
     /* border:2px solid black; */
     box-shadow: 5px 5px 5px lightblue;
+    transition: 0.2s ease;
     
 }
 
+.hotelInfoBody:hover{
+    box-shadow: 5px 5px 5px #F7FF93;
+}
 
 .hotelImage{
     border: 2px solid #064663;
@@ -208,6 +219,8 @@ font-family: 'Orelega One', cursive;
     background-color: lavender;
 
 }
+
+
 
 /* Html Selectors */
 
