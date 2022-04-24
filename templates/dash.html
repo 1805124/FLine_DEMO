@@ -24,7 +24,7 @@
 <body>
     <!--Header start-->
         <!--Navbar start-->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">F-Line DashBoard</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,7 +70,14 @@
                 <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
                     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
                         <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                        <span class="fs-4">NGO CENTER</span>
+                        {% block Headname %}
+                        {% if TYPE == "NGO" %}
+                        <span class="fs-4">NGO CENTER {{id}} </span>
+                        {% endif %}
+                        {% if TYPE == "HOTEL" %}
+                        <span class="fs-4">{{HOTEL_NAME}}</span>
+                        {% endif %}
+                        {% endblock %}
                     </a>
                     <hr>
                     <ul class="nav nav-pills flex-column mb-auto">
@@ -78,6 +85,24 @@
                             <a href="#" class="nav-link active" aria-current="page">
                                 <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
                                 My Account
+                                {% block hotelaccount%}
+                                {% if TYPE == "HOTEL" %}
+                                <div class="containe"> {{NAME}}
+                                </div>
+                                {% endif %}
+                                {% endblock %}
+                                {% block NGOaccount%}
+                                {% if TYPE == "NGO" %}
+                                <div class="containe"> {{NAME}}
+                                </div>
+                                {% endif %}
+                                {% endblock %}
+                                {%  block useraccount %}
+                                {% if TYPE == "USER" %}
+                                <div class="containe"> {{NAME}}
+                                </div>
+                                {% endif %}
+                                {% endblock %}
                             </a>
                         </li>
                         <li>
@@ -171,25 +196,39 @@
                     {% endfor %}
                     {% endblock %}
                 </div>
-                <div class="container d-flex justify-content-center align-items-center my-2" style="border: 2px solid blue; border-radius: 10px;">
-                    Registered NGOs box
+                <div class="container d-flex justify-content-center flex-column align-items-center my-2 requestingNgosBox" style="border: 2px solid blue; border-radius: 10px;background: #DFDCE5FF;">
+                    <div class="container d-flex justify-content-center align-items-center my-2 ngoListMsg" style="border: 1px solid black; border-radius: 50px;font-size: xx-large;font-family: 'Orelega One', cursive; text-shadow: 2px 2px 4px #000000;color: #F5F5DC;background-color: #97B3D0FF;">
+                        List of Requesting NGOs
+                    </div>
                     {% block req%}
                     {% for i in REQUESTS %}
-                    <form action="accept" method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="container">
-                            <input type="hidden" name="hotel_sub" value="{{i.receiever}}">
-                            <input type="hidden" name="ngo_sub" value="{{i.sender}}">
-                            <input type="hidden" name="day_count" value="{{i.day_count}}">
-                            <input type="hidden" name="identifier" value="{{i.id}}">
-                            {{i.receiver}}
-                            {{i.sender}}
-                            {{i.day_count}}
-                            {{i.time}}
-                            <button type="submit" >accept</button>
-                            <button type="submit" formaction="reject" formmethod="POST" formenctype="multipart/form-data">reject</button>
-                        </div>
-                    </form>
+                    <div class="container d-flex justify-content-center align-items-center styleform" style="margin:3px">
+                        <form action="accept" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="container d-flex justify-content-center ngoInfoBody align-items-center my-3 expandCardShadowLess" style="border-radius: 50px;background-color: 	#FF8C00;border-radius: 50px;/* border:2px solid black; */;box-shadow: 5px 5px 5px #FFB07C;transition: 0.2s ease; padding-top: 6px;padding-bottom: 6px; font-family: 'Roboto' , sans-serif;" onmouseover="this.style.boxShadow='5px 5px 5px #F7FF93'" onmouseleave="this.style.boxShadow='5px 5px 5px #FFB07C'">
+                                <input type="hidden" name="hotel_sub" value="{{i.receiever}}">
+                                <input type="hidden" name="ngo_sub" value="{{i.sender}}">
+                                <input type="hidden" name="day_count" value="{{i.day_count}}">
+                                <input type="hidden" name="identifier" value="{{i.id}}">
+                                {{i.receiver}}
+                                {{i.sender}}
+                                {{i.day_count}}
+                                {{i.time}}
+                                &nbsp;&nbsp;
+                                <button type="submit" style="border-radius: 50px;color: darkgreen;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>
+                                </button>
+                                &nbsp;&nbsp;
+                                <button type="submit" style="border-radius: 50px;color: red;" formaction="reject" formmethod="POST" formenctype="multipart/form-data">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                     </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                     {% endfor %}
                     {% endblock %}
                 </div>

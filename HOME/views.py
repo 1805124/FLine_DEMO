@@ -86,7 +86,8 @@ def login(request):
                         "CAPACITY":a.CAPACITY,
                         "IMAGE":a.image_upload,
                         "TYPE":"NGO",
-                        "HOTELS":hotels
+                        "HOTELS":hotels,
+                        "id":a.id
                     }
                     return render(request,"dash.html",context) 
                 else:

@@ -41,7 +41,8 @@ def ngosignup(request):
             "AREA":area,
             "CAPACITY":capacity,
             "AUTH":b_auth,
-            "TYPE":"NGO"
+            "TYPE":"NGO",
+            "id":loc.id
         }
         return render(request,"dash.html",context)
         
