@@ -10,6 +10,7 @@ class USERS(models.Model):
     domain = models.CharField(max_length=10)
     profile_pic = models.ImageField(null=True,blank=True,upload_to="static/images/userspic")
     agree = models.BooleanField()
+    ZONE = models.DecimalField(max_digits=2,decimal_places=0)
     
 
 

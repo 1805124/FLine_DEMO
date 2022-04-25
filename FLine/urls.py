@@ -23,4 +23,5 @@ urlpatterns = [
     path('',include('hotelsignup.urls')),
     path('',include('distributionteamsignup.urls')),
     path('',include('dashboard.urls')),
+    path('',include('addteams.urls'))
 ]

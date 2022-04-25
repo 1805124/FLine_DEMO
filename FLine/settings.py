@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'ngosignup',
     'hotelsignup',
     'distributionteamsignup',
-    'dashboard'
+    'dashboard',
+    'addteams'
 ]
 
 MIDDLEWARE = [

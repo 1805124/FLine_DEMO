@@ -101,5 +101,3 @@ def reject(request):
 
 
 
-def addteams(request):
-    return render(request,"addteams.html")

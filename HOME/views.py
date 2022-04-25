@@ -54,6 +54,7 @@ def login(request):
                 if (a.password == password):
                     print("validated .. Login Successfull as HOTEL")
                     requests = request_manage.objects.filter(receiever=email)
+                    subscriptdaTaL = subscription.objects.filter(ngo_sub=sender)
                     context={
                         "NAME":a.req_name,
                         "HOTEL_NAME":a.hotel_name,
@@ -64,7 +65,8 @@ def login(request):
                         "IMAGE":a.hotel_image_upload,
                         "AUTH_DOC":a.auth_doc_upload,
                         "TYPE":"HOTEL",
-                        "REQUESTS":requests
+                        "REQUESTS":requests,
+                        "SUBSCRIPTIONS":subscriptdaTaL
 
                     }
                     return render(request,"dash.html",context) 
