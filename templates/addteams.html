@@ -8,16 +8,24 @@
   <title>ADD A TEAM BITWA</title>
 </head>
 
-<body id="bg" style="background-image:url('{% static "images/FOOD_BACKGROUND.jpg" %}');">
-        <label for="1stper">Choose 1st person:</label>
-        <form action="addteam">
-        <select name="per" id="per">
-          {% block userlisting %}
-          {% for a in userlist %}
-          <option value="{{a}}">{{a.req_name}}</option>
-          {% endfor %}
-          {% endblock %}
-        </select>
+<body>
+        
+        <form action="addteammember" method="POST" enctype="multipart/form-data" >
+          {% csrf_token %}
+          <input type="hidden" value="{{ngo_email}}" name="ngo_email">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="name" placeholder="Enter Your NEW TEAM Name" name="TName">
+            <label for="floatingInput">ENTER NEW TEAM NAME</label>
+          </div>
+          <div class="uploadimage">
+            <div class="input-group mb-3">
+                <span class="input-group-text">Upload Image</span>
+                <input type="file" class="form-control" id="uploadtheimage" name="Timage">
+                <span class="input-group-text" id="uploadIcon"></span>
+            </div>
+            <div id="uploadMsg" class="form-text formError d-flex justify-content-center align-items-center">    
+            </div> 
+        </div>   
         <button type="submit">ADD</button>
       </form>
 

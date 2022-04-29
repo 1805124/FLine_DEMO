@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=HELLO, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" action="submitteammember" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% block volunteer_team %}
+        <select name="volunteer">
+        {% for entry in user_vals %}
+            <option value="{{ entry.req_email }}">{{ entry.req_name }}</option>
+        {% endfor %}
+        </select>
+        <select name="team">
+            {% for entry2 in team_vals  %}
+                <option value="{{ entry2.Team_name }}">{{ entry2.Team_name }}</option>
+            {% endfor %}
+        </select>    
+        {% endblock %}
+        <button type="submit"></button>
+        <input type="hidden" value="{{ngo_mail}}" name="ngo">
+        </form>
+</body>
+</html>

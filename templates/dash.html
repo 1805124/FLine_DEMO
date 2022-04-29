@@ -186,14 +186,18 @@
                     My teams box
                     {% block addteam%}
                     {% if TYPE == "NGO" %}
-                    <a action="addteam" href="addteams.html" style="border:1px solid red ;border-radius:50%; align-items: center;text-align: center;">+</a>
-
+                    <form action="addteam" method="POST" enctype="multipart/form-data" >
+                        {% csrf_token %}
+                        <input type="hidden" value="{{EMAIL}}" name="ngo_email">
+                        <button type="submit">+</button>
+                    </form>
                     {% endif %}
                     {% endblock %}
 
                     {% block SUBSC %}
                     {% for i in SUBSCRIPTIONS %}
                     <div class="container">{{i.hotel_sub}} {{i.ngo_sub}}{{i.sub_date}}{{i.days}}</div>
+                    
                     {% endfor %}
                     {% endblock %}
                 </div>

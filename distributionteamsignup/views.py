@@ -2,6 +2,7 @@ from django.shortcuts import render
 from distributionteamsignup import models
 from distributionteamsignup.models import USERS
 from ngosignup.models import ngosignup as ngomodel
+from hotelsignup.models import hotelsignup as hotelmodel
 # Create your views here.
 def distributionteamsignup(request):
     if request.method == "POST":
@@ -13,17 +14,18 @@ def distributionteamsignup(request):
       domain = request.POST.get('domain')
       profile_picture = request.FILES.get('UploadedImage')
       authentic = request.POST.getlist('auth')
+      ZONE = request.POST.get('ZONE')
       if(len(authentic)!=0):
           b_authentic = True
       else:
           b_authentic = False 
       prevdat = ngomodel.objects.filter(req_email=req_Email)
       prevdat2 = USERS.objects.filter(req_email=req_Email)
-      prevdat3 = hotelsignup.objects.filter(hotel_email=req_Email)
-      if(len(prevdat)+len(prevdat2)+(prevdat3)<=0):
+      prevdat3 = hotelmodel.objects.filter(hotel_email=req_Email)
+      if(len(prevdat)+len(prevdat2)+len(prevdat3)>0):
            dir = {"email_present":"Email id Alredy Existed Try to LOGIN "}
            return render(request,"index.html",dir) 
-      ins = models.USERS(req_name=req_name,req_email=req_Email,req_password=password,req_phone=req_phone,age=age,domain=domain,profile_pic=profile_picture,agree=b_authentic)
+      ins = models.USERS(req_name=req_name,req_email=req_Email,req_password=password,req_phone=req_phone,age=age,domain=domain,profile_pic=profile_picture,agree=b_authentic,ZONE=ZONE)
       ins.save()
       print("THE DATA ADDED SUCCESSFULLY IN USERS DATA BASE")
       data1 = USERS.objects.get(req_email=req_Email)

@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'FLine.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'fline',
+        'NAME': 'foodLine',
         'USER': 'root',
         'PASSWORD':'root',
         'PORT': 3306,
