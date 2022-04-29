@@ -50,7 +50,7 @@ def accept(request):
         iden = request.POST.get('identifier')
         hotel_Sub = request.POST.get('hotel_sub')
         ngo_Sub = request.POST.get('ngo_sub')
-        day_count=request.POST.get('day_count')
+        day_count = request.POST.get('day_count')
         ins= models.subscription(hotel_sub=hotel_Sub,ngo_sub=ngo_Sub,days=day_count)
         ins.save()
         datax= hotelsignup.objects.get(hotel_email=hotel_Sub)
