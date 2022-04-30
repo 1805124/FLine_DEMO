@@ -1,36 +1,121 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ADD A TEAM BITWA</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ADD A NEW TEAM</title>
+        <!-- Favicon -->
+        <link rel="icon" href="Favicon/favicon.ico">
+        
+        <!-- Bootstrap CSS and JS  -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>      
+        
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&family=Open+Sans&family=Pacifico&family=Roboto&family=Ubuntu&display=swap" rel="stylesheet">
+        
+        <!-- CSS-->
+        <link rel="stylesheet" href="{% static 'CSS/styles.css' %}" type="text/css">
+    </head>
 
 <body>
         
-        <form action="addteammember" method="POST" enctype="multipart/form-data" >
-          {% csrf_token %}
-          <input type="hidden" value="{{mail_ngo}}" name="ngo_email">
-          <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="name" placeholder="Enter Your NEW TEAM Name" name="TName">
-            <label for="floatingInput">ENTER NEW TEAM NAME</label>
+      <div class="container d-flex justify-content-center align-items-center my-5" style="text-align: center; padding:10px;border-radius: 15px;">
+        <div class="container d-flex flex-column justify-content-center align-items-center">
+          <div class="container">
+            <h1>Add Teams</h1>
           </div>
-          <div class="uploadimage">
-            <div class="input-group mb-3">
-                <span class="input-group-text">Upload Image</span>
-                <input type="file" class="form-control" id="uploadtheimage" name="Timage">
-                <span class="input-group-text" id="uploadIcon"></span>
+          <div class="container my-5" style="border: 2px solid #FEC260;border-radius: 15px;width: 600px;background-color: #FEC260;box-shadow: 5px 5px 10px black;">
+            <div class="container my-5">
+              <form action="addteammember" method="POST" enctype="multipart/form-data" name="myForm">
+                {% csrf_token %}
+                <input type="hidden" value="{{mail_ngo}}" name="ngo_email">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="name" style="border: 2px solid black;" placeholder="Enter Your NEW TEAM Name" name="TName">
+                  <label for="floatingInput">ENTER NEW TEAM NAME</label>
+                </div>
+                <div class="uploadimage">
+                  <div class="input-group mb-3" style="border: 2px solid black;border-radius: 5px;">
+                      <span class="input-group-text">Upload Image</span>
+                      <input type="file" class="form-control"  id="uploadtheimage" name="Timage">
+                      <span class="input-group-text" id="uploadIcon"></span>
+                  </div>
+                  <div id="uploadMsg" class="form-text formError d-flex justify-content-center align-items-center">    
+                  </div> 
+              </div>   
+              <button class="btn btn-primary" type="submit">ADD</button>
+            </form>
             </div>
-            <div id="uploadMsg" class="form-text formError d-flex justify-content-center align-items-center">    
-            </div> 
-        </div>   
-        <button type="submit">ADD</button>
-      </form>
+        </div>
+        </div>
+      </div>
 
 
 
       <script type="text/javascript" src="{% static 'JS/addteam.js' %}"></script>
+    <script>
+        const validIcon = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+          </svg>`;
+
+        const invalidIcon = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+          </svg>`;
+
+        const uploadErrorMsg = `Please Upload a .png File.`;
+        const validMsg = `Looks Good!`;
+
+        function clearErrors(){
+          let errors = document.getElementsByClassName("formError");
+          for (let item of errors){
+              item.innerHTML = "";
+          }
+      }
+      function setError(id,error){
+          //sets error inside tag of id
+          let element = document.getElementById(id)
+          element.innerHTML = error;
+      }
+
+      function setValid(id,valid){
+          let element = document.getElementById(id)
+          element.innerHTML=valid;
+      }
+
+            //upload validation
+      const upload = document.forms["myForm"]["uploadtheimage"];
+      upload.addEventListener('input',function (e){
+          // console.log(e.target.name)
+          let target = e.target.name;
+          if(target=="Timage"){
+              var upload = document.forms["myForm"]["uploadtheimage"].value;
+              var uploadFormat =/\.(png)$/;
+              uploadValid = uploadFormat.test(upload);
+              if(uploadValid == false){
+                  setError("uploadMsg",uploadErrorMsg)
+                  setError("uploadIcon",invalidIcon)
+                  document.getElementById("uploadIcon").classList.add("invalidIcon")
+                  document.getElementById("uploadIcon").classList.remove("validIcon")
+                  document.getElementById("uploadMsg").classList.add("errorMsg")
+                  document.getElementById("uploadMsg").classList.remove("validMsg")
+              }
+              else{
+                  setValid("uploadMsg",validMsg)
+                  setValid("uploadIcon",validIcon)
+                  document.getElementById("uploadIcon").classList.add("validIcon")
+                  document.getElementById("uploadIcon").classList.remove("invalidIcon")
+                  document.getElementById("uploadMsg").classList.add("validMsg")
+                  document.getElementById("uploadMsg").classList.remove("errorMsg")
+              }
+          }
+      } )
+
+    </script>
 </body>
 </html>
