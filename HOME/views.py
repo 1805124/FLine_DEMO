@@ -5,6 +5,9 @@ from ngosignup.models import ngosignup
 from django.contrib import messages
 from dashboard.models import request_manage
 from dashboard.models import subscription
+from addteams.models import Newteam,Newteammember
+
+
 # Create your views here.
 def index(request):
     return render(request,'index.html') 
@@ -67,7 +70,6 @@ def login(request):
                         "TYPE":"HOTEL",
                         "REQUESTS":requests,
                         "SUBSCRIPTIONS":subs_hotel
-
                     }
                     return render(request,"dash.html",context) 
                 else:
@@ -80,6 +82,7 @@ def login(request):
                     print("validated .. Login Successfull as NGO")
                     hotels = hotelsignup.objects.filter(ZONE=a.ZONE)
                     subs_hotel = subscription.objects.filter(ngo_sub=email)
+                    ngo_teams = Newteam.objects.filter(Ngo_name=email)
                     context={
                         "NAME":a.req_name,
                         "CONTACT":a.req_phone,
@@ -91,9 +94,11 @@ def login(request):
                         "TYPE":"NGO",
                         "HOTELS":hotels,
                         "id":a.id,
-                        "SUBSCRIPTIONS_HOTELS":subs_hotel
+                        "SUBSCRIPTIONS_HOTELS":subs_hotel,
+                        "NGO_TEAMS":ngo_teams,
                     }
                     return render(request,"dash.html",context) 
+                    
                 else:
                     print("Password does Not Matching .. login failed")
                     context={ "alertval":"PASSWORD WAS INVALID BRO",}

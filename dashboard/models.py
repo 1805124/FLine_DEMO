@@ -5,7 +5,7 @@ from django.db import models
 class request_manage(models.Model):
     sender = models.CharField(max_length=255)
     s_type = models.CharField(max_length=255)
-    day_count = models.DecimalField(max_length=255)
+    day_count = models.DecimalField(max_digits=10,decimal_places=0)
     receiever = models.CharField(max_length=255)
     r_type = models.CharField(max_length=255)
     time = models.DateTimeField(auto_now_add=True)
