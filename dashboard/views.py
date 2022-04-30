@@ -71,8 +71,7 @@ def accept(request):
             "REQUESTS":requests,
             "SUBSCRIPTIONS":subs
         }
-        return redirect('login')
-        # return render(request,"dash.html",context)
+        return render(request,"dash.html",context)
 
 def reject(request):
     if(request.method=="POST"):

@@ -26,39 +26,39 @@
         <!--Navbar start-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">F-Line DashBoard</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#">F-Line DashBoard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div style="color: white;">
                     Welcome {{NAME}} 🔘{{TYPE}}
                 </div>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-auto">
-                  <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
+                </li>
+                <li class="nav-item">
                     <a class="nav-link active" href="#">Link</a>
-                  </li>
-                  <li class="nav-item dropdown">
+                </li>
+                <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Dropdown
+                    Dropdown
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
                     </ul>
-                  </li>
+                    </li>
                 </ul>
                 <div class="userLogo">
                     <img src="{{IMAGE.url}}" height="50px" width="50px" alt="user-photo" class="rounded-circle me-2">
                 </div>
-              </div>
+                </div>
             </div>
-          </nav>
+        </nav>
         <!--Navbar start-->
     <!--Header end-->
     <!--middle section start-->
@@ -77,6 +77,9 @@
                             {% if TYPE == "HOTEL" %}
                             <span class="fs-4">{{HOTEL_NAME}}</span>
                             {% endif %}
+                            {% if TYPE == "USER" %}
+                            <span class="fs-4">{{NAME}}</span>
+                            {% endif %}
                             {% endblock %}
                         </a>
                         <hr>
@@ -87,12 +90,40 @@
                                     My Account
                                 </a>
                             </li>
+                            {% block noteamforhotel %}
+                            {% if TYPE != "HOTEL" %}
                             <li>
                                 <a href="#myTeams" class="nav-link link-dark">
                                     <svg class="bi me-2" width="16" height="16"><use xlink:href="#myTeams"></use></svg>
                                     My Teams
                                 </a>
                             </li>
+                            {% endif %}
+                            {% if TYPE == "HOTEL" %}
+                            <li>
+                                <a href="#myTeams" class="nav-link link-dark">
+                                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#myTeams"></use></svg>
+                                    OUR SUBSCRIBED NGO
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#myTeams" class="nav-link link-dark">
+                                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#myTeams"></use></svg>
+                                    NGO FOOD REQ
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% endblock %}
+                            {% block uservc %}
+                            {% if TYPE == "USER" %}
+                            <li>
+                                <a href="#" class="nav-link link-dark">
+                                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#requests"></use></svg>
+                                    Requests
+                                </a>
+                            </li>
+                            {% endif %}
+                            {% endblock %}
                             {% block regNgo %}
                             {% if TYPE == "HOTEL" %}
                             <li>
@@ -125,7 +156,7 @@
                             </li>
                             {% endif %}
                             {% endblock %}
-                           
+                            
                         </ul>
                         <hr>
                         <div class="dropdown">
@@ -158,16 +189,16 @@
                     </div>
                     {% block hotelaccount%}
                     {% if TYPE == "HOTEL" %}
-                     <div class="container d-flex justify-content-center align-items-center"> 
-                       <div class="row my-2">
+                    <div class="container d-flex justify-content-center align-items-center"> 
+                        <div class="row my-2">
                         <div class="col-4 d-flex justify-content-center align-items-center" >
                             <img src="{{IMAGE}}" class="rounded-circle me-2 float-start img-fluid" width="350" height="350" alt="user-photo" style="border-radius:50%;border:10px solid white;box-shadow: 0 0 10px black;">
                         </div>
                         <div class="col d-flex flex-column" style="background-color:#A1E3D8;border-radius: 30px;box-shadow: 0 0 10px black;">
                             <div class="my-2"></div>
-                           <div class="container my-1" style="border: 2px solid black; background-color: white;border-radius: 30px;">
+                            <div class="container my-1" style="border: 2px solid black; background-color: white;border-radius: 30px;">
                             Participants name : {{NAME}}
-                           </div>
+                            </div>
                             <div class="container my-1" style="border: 2px solid black; background-color: white;border-radius: 30px;">
                             Hotel Email id : {{EMAIL}}
                             </div>
@@ -185,22 +216,52 @@
                             </div>
                             <div class="my-2"></div>
                         </div>
-                       </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endblock %}
+                    {% block useraccount_body %}
+                    {% if TYPE == "USER" %}
+                    <div class="container d-flex justify-content-center align-items-center"> 
+                        <div class="row my-2">
+                        <div class="col-4 d-flex justify-content-center align-items-center" >
+                            <img src="{{IMAGE}}" class="rounded-circle me-2 float-start img-fluid" width="350" height="350" alt="user-photo" style="border-radius:50%;border:10px solid white;box-shadow: 0 0 10px black;">
+                        </div>
+                        <div class="col d-flex flex-column" style="background-color:#A1E3D8;border-radius: 30px;box-shadow: 0 0 10px black;">
+                            <div class="my-2"></div>
+                            <div class="container my-1" style="border: 2px solid black; background-color: white;border-radius: 30px;">
+                            Participants name : {{NAME}}
+                            </div>
+                            <div class="container my-1" style="border: 2px solid black; background-color: white;border-radius: 30px;">
+                            Personal Email id : {{EMAIL}}
+                            </div>
+                            <div class="container my-1" style="border: 2px solid black; background-color: white;border-radius: 30px;">
+                            Personal Contact : {{CONTACT}}
+                            </div>
+                            <div class="container my-1" style="border: 2px solid black; background-color: white;border-radius: 30px;">
+                            Age : {{AGE}}
+                            </div>
+                            <div class="container my-1" style="border: 2px solid black; background-color: white;border-radius: 30px;">
+                            DOMAIN : {{DOMAIN}}
+                            </div>
+                            <div class="my-2"></div>
+                        </div>
+                        </div>
                     </div>
                     {% endif %}
                     {% endblock %}
                     {% block NGOaccount%}
                     {% if TYPE == "NGO" %}
                     <div class="container d-flex justify-content-center align-items-center"> 
-                       <div class="row my-2">
+                        <div class="row my-2">
                         <div class="col-4 d-flex justify-content-center align-items-center" >
                             <img src="{{IMAGE}}" class="rounded-circle me-2 float-start img-fluid" width="350" height="350" alt="user-photo" style="border-radius:50%;border:10px solid white;box-shadow: 0 0 10px black;">
                         </div>
                         <div class="col d-flex flex-column" style="background-color:#A1E3D8;border-radius: 30px;box-shadow: 0 0 10px black;">
                             <div class="my-2"></div>
-                           <div class="container my-1" style="border: 2px solid black; background-color: white;border-radius: 30px;">
+                            <div class="container my-1" style="border: 2px solid black; background-color: white;border-radius: 30px;">
                             Participants name : {{NAME}}
-                           </div>
+                            </div>
                             <div class="container my-1" style="border: 2px solid black; background-color: white;border-radius: 30px;">
                             NGO Email id : {{EMAIL}}
                             </div>
@@ -218,14 +279,7 @@
                             </div>
                             <div class="my-2"></div>
                         </div>
-                       </div>
-                    </div>
-                    {% endif %}
-                    {% endblock %}
-                    {%  block useraccount %}
-                    {% if TYPE == "USER" %}
-                    <div class="container"> 
-                        {{NAME}}
+                        </div>
                     </div>
                     {% endif %}
                     {% endblock %}
@@ -236,9 +290,6 @@
                     <div class="container d-flex justify-content-center align-items-center my-2 ngoListMsg" style="border: 1px solid black; border-radius: 50px;font-size: xx-large;font-family: 'Orelega One', cursive; text-shadow: 2px 2px 4px #000000;color: white;background-color: #97B3D0FF;">
                         My Teams
                     </div>
-                    
-                
-                    
                     <div class="container d-flex justify-content-center align-items-center my-2" >
                         {% for ab in NGO_TEAMS %}
                         <div class="ngo_team_dash d-flex flex-column justify-content-center align-items-center expandCardShadowLess mx-2" style="background-color: #7FB5FF; padding: 10px; color:white; border-radius: 20px; box-shadow: 5px 5px 10px black;" onmouseover="this.style.boxShadow='0px 0px 5px 5px #F7FF93'" onmouseleave="this.style.boxShadow='5px 5px 5px black'">
@@ -248,22 +299,50 @@
                         {% endfor %}
                     </div>
                     
-                   <div class="container d-flex justify-content-end my-2">
+                    <div class="container d-flex justify-content-end my-2">
                         <form action="addteam" method="POST" enctype="multipart/form-data" >
                             {% csrf_token %}
                             <input type="hidden" value="{{EMAIL}}" name="ngo_email">
                             <button type="submit" class="expandCardShadowLess" style="border:2px solid orange;border-radius:30px;background-color: #F10086;color:white;font-family: 'Ubuntu'    , sans-serif;" onmouseover="this.style.backgroundColor='white';this.style.color='#F10086';this.style.transition='transform 0.7s ease'" onmouseleave="this.style.backgroundColor='#F10086';this.style.color='white';">Add Team</button>
                         </form>
-                   </div>
+                    </div>
                     {% endif %}
                     {% endblock %}
-
+                    {% block user_teams %}
+                    {% if TYPE == "USER" %}
+                    <div class="container d-flex justify-content-center align-items-center my-2 ngoListMsg" style="border: 1px solid black; border-radius: 50px;font-size: xx-large;font-family: 'Orelega One', cursive; text-shadow: 2px 2px 4px #000000;color: white;background-color: #97B3D0FF;">
+                        My Teams
+                    </div>
+            
+                    <div class="container my-2 d-flex justify-content-center align-items-center ngo_team_dash flex-column expandCardShadowLess" style="background-color: #7FB5FF; padding: 10px; color:white; border-radius: 20px; box-shadow: 5px 5px 10px black;" onmouseover="this.style.boxShadow='0px 0px 5px 5px #F7FF93'" onmouseleave="this.style.boxShadow='5px 5px 5px black'">
+                        <div class="container d-flex justify-content-center align-items-center"  >
+                            {% for i in SUBS_TEAM %}
+                            YOU ARE WORKING WITH {{i.Team_name}} under {{i.ngo_email}} NGO . WE ARE VERY THANKFULL TO HAVE YOU
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    
+                    {% endif %}
+                    {% endblock %}
                     {% block hotel_subscriptions %}
                     {% if TYPE == "HOTEL" %}
-                    OUR SUBSCRIBED NGO
+                    <div class="container d-flex justify-content-center align-items-center my-2 ngoListMsg" style="border: 1px solid black; border-radius: 50px;font-size: xx-large;font-family: 'Orelega One', cursive; text-shadow: 2px 2px 4px #000000;color: white;background-color: #97B3D0FF;">
+                        OUR SUBSCRIBED NGO
+                    </div>
                     {% block SUBSC %}
                     {% for i in SUBSCRIPTIONS %}
-                    <div class="container">{{i.hotel_sub}} {{i.ngo_sub}}{{i.sub_date}}{{i.days}}</div>
+                    <div class=" container d-flex justify-content-center align-items-center styleform" style="margin:3px">
+                        <div class="container  d-flex flex-column justify-content-center ngoInfoBody align-items-center my-3 expandCardShadowLess" style="border-radius: 50px;background-color: 	#FF8C00;border-radius: 50px;/* border:2px solid black; */;box-shadow: 5px 5px 5px black;transition: 0.7s ease; padding-top: 6px;padding-bottom: 6px; font-family: 'Roboto' , sans-serif;" onmouseover="this.style.boxShadow='0px 0px 5px 5px #F7FF93'" onmouseleave="this.style.boxShadow='5px 5px 5px black'">
+                                <div class="container subHotInf  d-flex justify-content-center align-items-center">
+                                    <div id="">{{i.hotel_sub}}</div>
+                                    <div id="">{{i.ngo_sub}}</div>
+                                    <div id="dayCount">{{i.days}}</div>
+                                    <div id="subDate">{{i.sub_date}}</div>
+                                </div>
+                        </div>
+                        
+                    </div>
                     {% endfor %}
                     {% endblock %}
                     {% endif %}
@@ -322,7 +401,7 @@
                                 <button type="submit" style="border-radius: 50px;color: red;" formaction="reject" formmethod="POST" formenctype="multipart/form-data">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
                                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
-                                     </svg>
+                                    </svg>
                                 </button>
                             </div>
                         </form>
@@ -360,7 +439,7 @@
                                 <button type="submit" class="hotelRequestBtn d-flex justify-content-center align-text-center" id="addColor">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                     </svg> 
+                                    </svg> 
                                 </button>
                             </div>
                         </form>    
@@ -393,14 +472,62 @@
     <!--middle section end-->
     <script type="text/javascript" src="{% static 'JS/dash.js' %}"></script>
     <script>
-        const subscription_date = new Date(document.getElementById('subDate').innerText);
-        const date_subscription_date = Date.parse(subscription_date)
-        const noOfDays =(document.getElementById('dayCount').innerText);
-        const int_noOfDays = parseInt(noOfDays)
-        subscription_date.setDate(date_subscription_date+int_noOfDays);
-        console.log(document.getElementById('subDate').innerText)
-        console.log(document.getElementById('dayCount').innerText)
-        console.log(subscription_date);
+        const subscription_date = document.getElementById('subDate').innerText;
+        const arr = subscription_date.split(",").join(" ").split(" ")
+        const results = arr.filter(element => {
+        return element !== "";
+        });
+        switch (results[0]) {
+            case "January":
+        }
+
+        let month = 0
+        switch (results[0]) {
+            case "January":
+                month = 1;
+                break;
+            case "February":
+                month = 2;
+                break;
+            case "March":
+                month = 3;
+                break;
+            case "April":
+                month = 4;
+                break;
+            case "May":
+                month = 5;
+                break;
+            case "June":
+                month = 6;
+                break;
+            case "July":
+                month = 7;
+                break;
+            case "Augest" :
+                month = 8;
+                break;
+            case "September":
+                month = 9;
+                break;
+            case "October":
+                month = 10;
+                break;
+            case "November":
+                month = 11;
+                break;
+            case "December":
+                month = 12;
+        }
+        const finaldate = new Date(results[2]+"-"+month+"-"+results[1]+" "+results[3]+":00")
+        console.log(finaldate)
+        console.log("HELLO WORLD")
+        //const date_subscription_date = Date.parse(subscription_date)
+        let noOfDays = (document.getElementById('dayCount').innerText);
+        
+        finaldate.setDate(finaldate.getDate()+ noOfDays);
+        console.log(finaldate)
+        console.log("Good To Go Bro")
     </script>
 </body>
 </html>

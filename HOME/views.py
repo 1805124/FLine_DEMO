@@ -38,6 +38,7 @@ def login(request):
             for a in data1:
                 if (a.req_password == password):
                     print("validated .. Login Successfull as USER")
+                    subs_user = Newteammember.objects.filter(User_email= email)
                     context={
                         "NAME":a.req_name,
                         "EMAIL":a.req_email,
@@ -45,7 +46,8 @@ def login(request):
                         "AGE":a.age,
                         "DOMAIN":a.domain,
                         "IMAGE":a.profile_pic,
-                        "TYPE":"USER"
+                        "TYPE":"USER",
+                        "SUBS_TEAM":subs_user
                     }
                     return render(request,"dash.html",context) 
                 else:
@@ -107,7 +109,6 @@ def login(request):
             print("email id Not Registered...")
             messages.info(request,"EMAIL NOT REGISTERED YET")
             return render(request,"signUp.html")
-           
             
             
 

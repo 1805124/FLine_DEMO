@@ -36,7 +36,7 @@ def distributionteamsignup(request):
                   "CONTACT":req_phone,
                   "AGE":age,
                   "DOMAIN":domain,
-                  "TYPE":"USER"
+                  "TYPE":"USER",
               }
 
       return render(request,"dash.html",context)
